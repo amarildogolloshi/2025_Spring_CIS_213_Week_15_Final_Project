@@ -1,23 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route } from 'react-router'
 import './App.css'
-import ContainerLayout from './components/ContainerLayout'
-import { Link, Route, Routes } from 'react-router-dom'
-import NotFound from './pages/NotFound'
-import Home from './pages/Home'
+import PublicLayout from "./components/layouts/public/PublicLayout.jsx"
+import Home from './components/pages/home-page/Home.jsx'
 
 function App() {
   
 
   return (
-    <ContainerLayout>
+    <PublicLayout>
       <Routes>
-        <Route path="/"  element={<Home/>}/>
-        <Route path="*"  element={<NotFound/>}/>
+        <Route index element={<Home />}/>
       </Routes>
-
-    </ContainerLayout>
+    </PublicLayout>
   )
 }
 
