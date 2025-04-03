@@ -1,0 +1,15 @@
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2.5em;
+    font-weight: 400;
+    text-decoration: none;
+
+    color: var(--pulse-blue);
+}
+
+.logo img {
+    width: 50px;
+}
+

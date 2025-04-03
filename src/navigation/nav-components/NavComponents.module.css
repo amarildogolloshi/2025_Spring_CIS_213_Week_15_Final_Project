@@ -1,0 +1,45 @@
+.ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ul li {
+    list-style-type: none;
+    margin-right: 2em;
+}
+
+.ul li:last-of-type {
+    margin-right: 0;
+}
+
+.navItem {
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    padding: .25em .25em;
+    transition: all 0.2s ease;
+
+    color: var(--nav-text-color);
+}
+
+.navItem:hover {
+    border-color: var(--pulse-blue);
+}
+
+.navBtn {
+    text-decoration: none;
+    color: var(--default-white);
+    padding: .5em 1em;
+    font-size: 1.25em;
+    border-radius: 5px;
+    background-color: var(--pulse-blue);
+    box-shadow: 0 0 2px transparent;
+
+    transition: all 0.2s ease;
+}
+
+.navBtn:hover {
+    background-color: var(--default-white);
+    color: var(--pulse-blue);
+    box-shadow: 0 0 2px var(--pulse-blue);
+}

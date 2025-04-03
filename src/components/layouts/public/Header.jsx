@@ -1,6 +1,8 @@
+import styles from "./Header.module.css";
+
 function Header({ children }) {
     return (
-        <header>
+        <header className={styles.header}>
             { children }
         </header>
     );

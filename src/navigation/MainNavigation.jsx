@@ -1,26 +1,31 @@
-import { NavLink } from "react-router";
+import { useLocation } from "react-router";
+import styles from "./MainNavigation.module.css";
+import HomeNav from "./nav-components/HomeNav";
+import SignInNav from "./nav-components/SignInNav";
 
 function MainNavigation() {
-    const pageLinks = [
-        {to: "#", },
-    ]
+    const location = useLocation();
+    let navRender = <HomeNav />
+
+    // Logic for rendering different navigations
+    switch (location.pathname) {
+        case "/":
+            navRender = <HomeNav />;
+            break;
+        case "/signin":
+            navRender = <SignInNav />;
+            break;
+        case "/support":
+            navRender = undefined;  // Support is a separate page; no nav
+            break;
+        default:
+            navRender = <HomeNav />;
+            break;
+    };
 
     return (
-        <nav>
-            <li>
-                <a href="#">Home</a>
-            </li>
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
-            <li>
-                <NavLink to={"/signin"}>
-                    Sign In
-                </NavLink>
-            </li>
+        <nav className={styles.navigation}>
+            { navRender }
         </nav>
     );
 }
