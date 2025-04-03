@@ -5,6 +5,7 @@ import Home from './components/pages/home-page/Home.jsx'
 import SignIn from './components/pages/sign-in/SignIn.jsx'
 import Support from './components/pages/support/Support.jsx'
 import { UserContextProvider } from './store/UserContextProvider.jsx'
+import Dashboard from './components/layouts/private/Dashboard.jsx'
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />}/>
           <Route path='signin' element={<SignIn />}/>
           <Route path='support' element={<Support />}/>
+          <Route path='dashboard' element={<Dashboard />}/>
         </Routes>
       </UserContextProvider>
     </PublicLayout>

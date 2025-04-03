@@ -13,7 +13,10 @@ export function userReducer(state, action) {
 
             if (userData) {
                 // Successful sign in
-                return userData;
+                return {
+                    ...userData,
+                    isLoggedIn: true,
+                };
             } else {
                 // Unsuccessful sign in
                 return state;
@@ -27,6 +30,7 @@ export function userReducer(state, action) {
 const DATA = [
     {
         id: uuidv4(),
+        isLoggedIn: false,
         username: "user",
         password: "pass123",
         events: [
