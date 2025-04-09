@@ -2,6 +2,8 @@ import { use, useEffect } from "react";
 import { useState } from "react";
 import UserContext from "../../../store/UserContextProvider";
 import { useNavigate } from "react-router";
+import styles from "./SignIn.module.css";
+import { NavLink } from "react-router-dom";
 
 function SignIn() {
     const {user, dispatch} = use(UserContext);
@@ -33,13 +35,21 @@ function SignIn() {
     }, [user]);
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>Username: </label>
-            <input type="text" value={userInput} onChange={handleUserInput}/>
-            <label>Password: </label>
-            <input type="text" value={passInput} onChange={handlePassInput}/>
-            <button type="submit">Sign In</button>
-        </form>
+        <section className={styles.section}>
+            <form onSubmit={handleSubmit}>
+                <h2>Welcome to <span>Pulse</span></h2>
+                <label>Username: </label> <br />
+                <input type="text" value={userInput} onChange={handleUserInput}/> <br />
+                <label>Password: </label> <br />
+                <input type="password" value={passInput} onChange={handlePassInput}/> <br />
+                <button type="submit">Sign In</button>
+                <hr />
+                <div>
+                    <NavLink to={"/forgotpassword"}>Forgot Password?</NavLink>
+                    <NavLink to={"/signup"}>Sign Up!</NavLink>
+                </div>
+            </form>
+        </section>
     );
 }
 
