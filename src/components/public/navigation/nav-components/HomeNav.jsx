@@ -18,7 +18,7 @@ function HomeNav() {
         if (element) {
             const offsetTop = element.offsetTop;
             window.scrollTo({
-                top: offsetTop - 160, // 10rem = 160px (assuming 1rem = 16px)
+                top: offsetTop - 112, // 10rem = 160px (assuming 1rem = 16px)
                 behavior: 'smooth'
             });
         }

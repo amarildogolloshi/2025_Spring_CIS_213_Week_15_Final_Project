@@ -1,6 +1,7 @@
 .section {
     height: 80vh;
     background-color: #f9f9f9;
+    padding: 3rem;
 }
 
 .h1 {
