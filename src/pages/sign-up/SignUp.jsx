@@ -39,35 +39,34 @@ function SignUp() {
             <form onSubmit={handleSubmit}>
                 <h2>Sing Up</h2>
                 <div className={styles["form-body"]}>
-                <div className={styles["form-group"]}>
-                    <label>Username: </label>
-                    <input type="text" value={userInput} onChange={handleUserInput}/>
-                </div>
+                    <div className={styles["form-group"]}>
+                        <label>Username: </label>
+                        <input type="text" value={userInput} onChange={handleUserInput}/>
+                    </div>
 
-                <div className={styles["form-group"]}>
-                    <label>Email: </label>
-                    <input type="text" value={userInput} onChange={handleUserInput}/>
-                </div>
+                    <div className={styles["form-group"]}>
+                        <label>Email: </label>
+                        <input type="text" value={userInput} onChange={handleUserInput}/>
+                    </div>
 
-                <div className={styles["form-group"]}>
-                    <label>Company: </label>
-                    <input type="text" value={userInput} onChange={handleUserInput}/>
+                    <div className={styles["form-group"]}>
+                        <label>Company: </label>
+                        <input type="text" value={userInput} onChange={handleUserInput}/>
+                    </div>
+                    
+                    <div className={styles["form-group"]}>
+                        <label>Password: </label> 
+                        <input type="password" value={passInput} onChange={handlePassInput}/>
+                    </div>
+
+                    <div className={styles["form-group"]}>
+                        <label>Re-enter Password: </label> 
+                        <input type="password" value={passInput} onChange={handlePassInput}/>
+                    </div>
+                                        
+                    <button type="submit">Sign Up</button>
                 </div>
                 
-                <div className={styles["form-group"]}>
-                    <label>Password: </label> 
-                    <input type="password" value={passInput} onChange={handlePassInput}/>
-                </div>
-
-                <div className={styles["form-group"]}>
-                    <label>Re-enter Password: </label> 
-                    <input type="password" value={passInput} onChange={handlePassInput}/>
-                </div>
-                                    
-                <button type="submit">Sign Up</button>
-                </div>
-                
-                <hr />
                 <div className={styles["form-footer"]}>
                     <NavLink to={"/forgotpassword"}>Forgot Password?</NavLink>
                     <NavLink to={"/signin"}>Sign In!</NavLink>

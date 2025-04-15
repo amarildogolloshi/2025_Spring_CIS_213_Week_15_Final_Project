@@ -32,12 +32,14 @@
 .section form .form-body{
     display: flex;
     flex-direction: column;
-    padding: 1rem 0;
-    gap:1rem;
+    padding: 0.5rem 0;
+    gap:0.5rem;
 }
 .section form .form-footer{
     border-top: 1px solid var(--header-border-bottom);
     padding: 1rem 0;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .section form label {
@@ -94,15 +96,7 @@
     box-shadow: 0 0 2px var(--light-border-blue);
 }
 
-.section form hr {
-    border: 1px solid var(--header-border-bottom);
-}
 
-.section form div {
-    /* padding-top: 1em; */
-    display: flex;
-    justify-content: space-evenly;
-}
 
 .section form div a {
     font-size: .8rem;
