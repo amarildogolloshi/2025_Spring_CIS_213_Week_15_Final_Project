@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100vh; /* Full screen height */
+    height: 88vh; /* Full screen height */
     background: linear-gradient(to right, var(--pulse-blue), var(--light-border-blue)); /* Blue gradient */
     color: white;
 }

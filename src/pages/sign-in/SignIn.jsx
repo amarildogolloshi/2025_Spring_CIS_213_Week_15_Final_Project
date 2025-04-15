@@ -2,7 +2,7 @@ import { use, useEffect } from "react";
 import { useState } from "react";
 import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router";
-import styles from "./SignIn.module.css";
+import styles from "../UserLoginControl.module.css";
 import { NavLink } from "react-router-dom";
 
 function SignIn() {
@@ -37,14 +37,23 @@ function SignIn() {
     return (
         <section className={styles.section}>
             <form onSubmit={handleSubmit}>
-                <h2>Welcome to <span>Pulse</span></h2>
-                <label>Username: </label> <br />
-                <input type="text" value={userInput} onChange={handleUserInput}/> <br />
-                <label>Password: </label> <br />
-                <input type="password" value={passInput} onChange={handlePassInput}/> <br />
-                <button type="submit">Sign In</button>
-                <hr />
-                <div>
+            <h2>Welcome to <span>Pulse</span></h2>
+                <div className={styles["form-body"]}>
+                     <div className={styles["form-group"]}>
+                     <label>Username: </label>
+                     <input type="text" value={userInput} onChange={handleUserInput}/>
+                     </div>
+                        
+
+                    <div className={styles["form-group"]}>
+                        <label>Password: </label>
+                        <input type="password" value={passInput} onChange={handlePassInput}/>
+                    </div>
+                    
+                    <button type="submit">Sign In</button>
+                </div>
+                
+                <div className={styles["form-footer"]}>
                     <NavLink to={"/forgotpassword"}>Forgot Password?</NavLink>
                     <NavLink to={"/signup"}>Sign Up!</NavLink>
                 </div>
