@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function HomeNav() {
     const pageLinks = [
-        {to: "#hero", text: "Home"},
+        {to: "#home", text: "Home"},
         {to: "#about", text: "About"},
         {to: "#contact", text: "Contact"},
     ];

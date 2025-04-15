@@ -2,7 +2,7 @@ import styles from "./Hero.module.css";
 
 function Hero() {
     return (
-        <section id="hero" className={styles.hero}>
+        <section id="home" className={styles.hero}>
             <div className={styles.heroContent}>
                 <h1 className={styles.title}>Welcome to Pulse</h1>
                 <p className={styles.subtitle}>
