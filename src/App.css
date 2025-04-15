@@ -1,0 +1,108 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
+    font-weight:400;
+  }
+  
+  
+  body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 10rem; 
+  
+  }
+  
+  .container {
+    width: 60rem;
+  }
+
+  
+  /* Logo */
+  .logo {  
+    display: flex;
+    flex-direction: row;
+    width: 10rem;
+    align-items: center;
+  
+  }
+  
+  .logo .pulse-image {
+    /* flex: 0 0 50%; */
+    width: 2.5rem;
+    border-radius: 50%;
+    animation: pulse-animation 1.5s infinite;
+  }
+  
+  .logo .pulse-image img {
+    width: 40px;
+    /* height: 100%; */
+    border-radius: 50%;
+  }
+  
+  .logo .pulse-text {
+    /* flex: 0 0 50%; */
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    color: #00aaff;
+    text-align: center;
+    
+    display: flex;
+    text-decoration: none;
+  }
+  
+  .logo .pulse-text a {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    color: #005999;
+    text-align: center;
+    /* padding: 1rem; */
+    /* flex: 0 0 33.33%; */
+    display: flex;
+    text-decoration: none;
+  }
+  
+  /* End Logo */
+  
+  header nav {
+    display: flex;
+    gap: 1rem;
+  }
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  header nav ul li.cta a {
+    background-color: #005999;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    
+    transition: background-color 0.3s, color 0.3s;
+  } 
+  
+  header nav ul li a:hover {
+    /* background-color: #005999; */
+    /* color: white; */
+    border-bottom: 3px solid #005999;
+  }
+  
+  .container main {
+    /* height: 1000px; */
+    margin-top: 2rem;
+  }
+ 
+  
+  

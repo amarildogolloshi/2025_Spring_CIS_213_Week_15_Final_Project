@@ -1,0 +1,42 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh; /* Full screen height */
+    background: linear-gradient(to right, var(--pulse-blue), var(--light-border-blue)); /* Blue gradient */
+    color: white;
+}
+
+.heroContent {
+    max-width: 800px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.cta {
+    background-color: white;
+    color:var(--pulse-blue);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background-color: var(--pulse-blue);
+    color: white;
+    border:1px white solid;
+}

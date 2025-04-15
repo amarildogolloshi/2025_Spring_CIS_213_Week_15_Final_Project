@@ -1,6 +1,6 @@
 import { use, useEffect } from "react";
 import { useState } from "react";
-import UserContext from "../../../store/UserContextProvider";
+import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router";
 import styles from "./SignIn.module.css";
 import { NavLink } from "react-router-dom";

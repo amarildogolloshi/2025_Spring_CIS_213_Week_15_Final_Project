@@ -42,4 +42,5 @@
     background-color: var(--default-white);
     color: var(--pulse-blue);
     box-shadow: 0 0 2px var(--pulse-blue);
+    border: none;
 }

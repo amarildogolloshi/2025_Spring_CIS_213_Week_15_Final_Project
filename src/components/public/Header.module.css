@@ -1,0 +1,24 @@
+.header {
+    /* background-color: #f0f0f0; */
+    padding: 3rem 0;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+  }
+  
+.header-fixed-top {
+    padding: 3rem 0;
+    position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60rem; /* Same as container width */
+      background-color: white;
+      z-index: 1000;
+      /* padding: 1rem 0; */
+      display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+      border-bottom: 1px solid #ccc;
+  }
