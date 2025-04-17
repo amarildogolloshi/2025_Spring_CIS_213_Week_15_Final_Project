@@ -15,8 +15,6 @@ function SignUp() {
     const [companyController, companyErrorController] = useInput("");
     const [passController, passErrorController] = useInput("");
     const [rePassController, rePassErrorController] = useInput("");
-    // const [passInput, passError, updatePassInput, updatePassError] = useInput("");
-    // const [retypePass, retypePassError, updateRetypePass, updateRetypePassError] = useInput("");
 
     // Handle submit: Updates 'user' (ON THE NEXT RENDER) upon successful login
     function handleSubmit(e) {

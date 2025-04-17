@@ -6,7 +6,6 @@ export const initialState = [];
 export function userReducer(state, action) {
     switch (action.type) {
         case "SIGN_IN":
-            console.log(DATA);
             // Try to find the user
             const userData = DATA.find((user) => 
                 user.username == action.payload.username && user.password == action.payload.password
@@ -35,13 +34,19 @@ export function userReducer(state, action) {
                 "events": [],
             }
 
-            console.log(newUser);
-
             // Add to new user to DATA
             DATA.push(newUser);
 
-            // TODO: Log the user in after, for now just return state
-            return state;
+            // TODO - validate on backend
+            let backendValidation = true;
+            if (backendValidation) {
+                return {
+                    ...newUser,
+                    isLoggedIn: true,
+                };
+            } else {
+                return state;
+            }
 
         default:
             return state;
