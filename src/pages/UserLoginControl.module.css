@@ -10,12 +10,6 @@
 
 .section form {
     background-color: var(--default-white);
-    /* width: 30%; */
-    /* height: 50%;
-    min-width: 450px;
-    min-height: 400px;
-    max-width: 550px;
-    max-height: 500px; */
     padding: 1rem 3rem;
     text-align: center;
 
