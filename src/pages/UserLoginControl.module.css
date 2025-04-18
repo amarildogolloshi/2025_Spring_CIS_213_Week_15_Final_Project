@@ -1,6 +1,6 @@
 .section {
     background: linear-gradient(var(--light-border-blue) 0%, var(--pulse-blue) 80%);
-    min-height: 80vh;
+    min-height: 69vh;
     padding: 3em;
     display: flex;
     align-items: center;

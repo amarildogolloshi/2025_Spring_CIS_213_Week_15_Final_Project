@@ -48,7 +48,7 @@ function HomeNav() {
                 ))
             }
             <li>
-                <NavLink className={styles.navBtn} to={"/signin"}>
+                <NavLink className={styles.navBtn} to={"/dashboard"}>
                     Dashboard
                 </NavLink>
             </li>

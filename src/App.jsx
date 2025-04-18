@@ -1,20 +1,27 @@
+import { useContext, useEffect } from "react";
 import { Routes, Route } from 'react-router'
 import './App.css'
 import PublicLayout from "./components/public/PublicLayout.jsx"
 import Home from './pages/home-page/Home.jsx'
 import SignIn from './pages/sign-in/SignIn.jsx'
 import Support from './pages/support/Support.jsx'
-import { UserContextProvider } from './store/UserContextProvider.jsx'
+import UserContext from './store/UserContextProvider.jsx'
 import Dashboard from './components/private/Dashboard.jsx'
 import SignUp from './pages/sign-up/SignUp.jsx'
 import ForgotPassword from './pages/forgot-password/ForgotPassword.jsx'
+import PrivateLayout from "./components/private/PrivateLayout.jsx";
 
 function App() {
-  
+  const {user, dispatch} = useContext(UserContext);
 
-  return (
-    <PublicLayout>
-      <UserContextProvider>
+  return user.isLoggedIn ? (
+      <PrivateLayout>
+        <Routes>
+          <Route path='dashboard' element={<Dashboard />}/>
+        </Routes>
+      </PrivateLayout>
+    ) : (
+      <PublicLayout>
         <Routes>
           <Route index element={<Home />}/>
           <Route path='signin' element={<SignIn />}/>
@@ -23,9 +30,9 @@ function App() {
           <Route path='signup' element={<SignUp />}/>
           <Route path='forgotpassword' element={<ForgotPassword />} />
         </Routes>
-      </UserContextProvider>
+      
     </PublicLayout>
-  )
+    )
 }
 
 export default App

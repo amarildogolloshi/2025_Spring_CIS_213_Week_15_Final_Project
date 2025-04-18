@@ -22,7 +22,7 @@ function About() {
                         <p><strong>Amarildo Golloshi</strong></p>
                     </div>
                     <div className={styles.member}>
-                        <img src="/images/designer.jpg" alt="Team Member" />
+                        <img src="https://media.licdn.com/dms/image/v2/C4E03AQFg4H-ixki-dQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1628602898925?e=1750291200&v=beta&t=iJ1Mkb565vysXxwR8-SHSbuArSgPwhwYqbrB1mF_T9k" alt="Team Member" />
                         <p><strong>Chris Lee</strong></p>
                     </div>
                 </div>

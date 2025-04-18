@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 export const initialState = [];
 
 export function userReducer(state, action) {
+    const [user, setUser] = useLocalStorage("user", { isLoggedIn: false });
+
     switch (action.type) {
         case "SIGN_IN":
             // Try to find the user
@@ -13,6 +15,7 @@ export function userReducer(state, action) {
 
             if (userData) {
                 // Successful sign in
+                setUser({ ...userData, isLoggedIn: true });
                 return {
                     ...userData,
                     isLoggedIn: true,
@@ -45,9 +48,12 @@ export function userReducer(state, action) {
                     isLoggedIn: true,
                 };
             } else {
+                setUser({ isLoggedIn: false });
                 return state;
             }
+        case "LOGOUT":
 
+            return []
         default:
             return state;
     }
