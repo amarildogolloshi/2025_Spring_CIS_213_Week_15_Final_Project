@@ -32,6 +32,8 @@ function SignIn() {
         if (user.isLoggedIn) {
             navigate("/dashboard");
         }
+
+        
     }, [user]);
 
     return (

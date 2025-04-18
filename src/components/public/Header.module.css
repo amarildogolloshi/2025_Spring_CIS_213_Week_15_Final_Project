@@ -1,5 +1,5 @@
 .header {
-    /* background-color: #f0f0f0; */
+    flex: 0 1 auto;
     padding: 3rem 0;
     display: flex !important;
     justify-content: space-between;

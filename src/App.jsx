@@ -10,14 +10,18 @@ import Dashboard from './components/private/Dashboard.jsx'
 import SignUp from './pages/sign-up/SignUp.jsx'
 import ForgotPassword from './pages/forgot-password/ForgotPassword.jsx'
 import PrivateLayout from "./components/private/PrivateLayout.jsx";
+import useLocalStorage from "./hooks/useLocalStorage.jsx";
+import NotFound from "./pages/not-found/NotFound.jsx";
 
 function App() {
   const {user, dispatch} = useContext(UserContext);
-
+  const [guess, setUser] = useLocalStorage("user", { isLoggedIn:  user.isLoggedIn });
+  
   return user.isLoggedIn ? (
       <PrivateLayout>
         <Routes>
           <Route path='dashboard' element={<Dashboard />}/>
+          <Route path='*' element={<NotFound />}/>
         </Routes>
       </PrivateLayout>
     ) : (
@@ -29,6 +33,7 @@ function App() {
           <Route path='dashboard' element={<Dashboard />}/>
           <Route path='signup' element={<SignUp />}/>
           <Route path='forgotpassword' element={<ForgotPassword />} />
+          <Route path='*' element={<NotFound />}/>
         </Routes>
       
     </PublicLayout>

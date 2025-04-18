@@ -1,0 +1,31 @@
+.not-found {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    background: linear-gradient(to right, var(--pulse-blue), var(--light-border-blue)); /* Blue gradient */
+    color: white;
+    gap: 1rem;
+}
+
+.not-found a {
+    background-color: white;
+    color: var(--pulse-blue);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.not-found a:hover{
+    background-color: var(--pulse-blue);
+    color: white;
+    border:1px white solid;
+}
+
