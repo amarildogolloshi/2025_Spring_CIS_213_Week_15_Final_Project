@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Hero.module.css";
 
 function Hero() {
@@ -8,7 +9,7 @@ function Hero() {
                 <p className={styles.subtitle}>
                     Empowering ideas. Connecting people. Shaping the future.
                 </p>
-                <button className={styles.cta}>Go to Dashboard</button>
+                <Link to="/dashboard"  className={styles.cta}>Go to Dashboard</Link>
             </div>
         </section>
     );
