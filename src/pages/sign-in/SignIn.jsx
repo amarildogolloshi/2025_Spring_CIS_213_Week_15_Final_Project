@@ -43,10 +43,10 @@ function SignIn() {
     useEffect(() => {
         console.log("Login user:", user)
         if (user?.isLoggedIn) {
-            navigate("/dashboard");
+            navigate("/pulse/dashboard");
         } 
     }, [user?.isLoggedIn]);
-    
+
     return (
         <PublicLayout>
             <section className={styles.section}>

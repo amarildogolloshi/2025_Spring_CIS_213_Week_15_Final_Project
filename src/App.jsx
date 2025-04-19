@@ -13,6 +13,18 @@ import PrivateLayout from "./components/private/PrivateLayout.jsx";
 import useLocalStorage from "./hooks/useLocalStorage.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
+import Report from "./components/private/Support/Report/Report.jsx";
+import Feature from "./components/private/Support/Feature/Feature.jsx";
+import About from "./components/private/About/About.jsx";
+import EventCreate from "./pages/events/create/EventCreate.jsx";
+import EventsShowAll from "./pages/events/show-all/EventsShowAll.jsx";
+import MemberCreate from "./pages/members/create/MemberCreate.jsx";
+import MembersShowAll from "./pages/members/show-all/MembersShowAll.jsx";
+import PrivacyPolicy from "./pages/privacy-policy/PrivacyPolicy.jsx";
+import TermsAndConditions from "./pages/terms-and-conditions/TermsAndConditions.jsx";
+
+import ContactPage from "./pages/contact/ContactPage.jsx";
+import AboutPage from "./pages/about/AboutPage.jsx";
 
 function App() {
   const {user, dispatch, login} = useContext(UserContext);
@@ -40,11 +52,24 @@ function App() {
     
         <Routes>
           <Route index element={<Home />}/>
+          <Route path='home'element={<Home />}/>
           <Route path='signin' element={<SignIn />}/>
           <Route path='support' element={<Support />}/>
-          <Route path='dashboard' element={<ProtectedRoute element={<Dashboard />} />}/>
           <Route path='signup' element={<SignUp />}/>
-          <Route path='forgotpassword' element={<ForgotPassword />} />
+          <Route path='about' element={<AboutPage />} />
+          <Route path='contact' element={ <ContactPage/>} />
+          <Route path='privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='terms-and-conditions' element={ <TermsAndConditions/>} />
+
+
+          <Route path='/pulse/dashboard' element={<ProtectedRoute element={<Dashboard />} />}/>
+          <Route path='/pulse/events/create' element={<ProtectedRoute element={<EventCreate />} />}/>
+          <Route path='/pulse/events' element={<ProtectedRoute element={<EventsShowAll />} />}/>
+          <Route path='/pulse/members/create' element={<ProtectedRoute element={<MemberCreate />} />}/>
+          <Route path='/pulse/members' element={<ProtectedRoute element={<MembersShowAll />} />}/>
+          <Route path='/pulse/support/report' element={<Report />} />
+          <Route path='/pulse/support/feature' element={<Feature />} />
+          <Route path='/pulse/about' element={<ProtectedRoute element={<About />} />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
   )

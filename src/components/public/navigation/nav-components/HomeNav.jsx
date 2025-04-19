@@ -1,13 +1,13 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import styles from "./NavComponents.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 function HomeNav() {
     const pageLinks = [
-        {to: "#home", text: "Home"},
-        {to: "#about", text: "About"},
-        {to: "#contact", text: "Contact"},
+        {to: "home", text: "Home"},
+        {to: "about", text: "About"},
+        {to: "contact", text: "Contact"},
     ];
 
 
@@ -31,7 +31,8 @@ function HomeNav() {
       scrollToSection(sectionId);
     } else {
       // If not on home page, navigate to home page first
-      window.location.href = `/${sectionId}`;
+        window.location.href = `/#${sectionId}`;
+    //   window.location.href = `/`;
     }
   };
 
@@ -41,14 +42,14 @@ function HomeNav() {
                 // Home Page Navigation - Navigate on page
                 pageLinks.map((link) => (
                     <li key={link.to}>
-                        <Link className={styles.navItem} to={link.to} onClick={(e) => handleClick(e, link.text)}>
+                        <HashLink smooth className={styles.navItem} to={`#${link.to}`} onClick={(e) => handleClick(e, link.to)}>
                             {link.text}
-                        </Link>
+                        </HashLink>
                     </li>
                 ))
             }
             <li>
-                <NavLink className={styles.navBtn} to={"/dashboard"}>
+                <NavLink className={styles.navBtn} to={"/signin"}>
                     Dashboard
                 </NavLink>
             </li>

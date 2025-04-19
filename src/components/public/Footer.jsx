@@ -12,8 +12,8 @@ function Footer({ children }) {
                     <p>All rights reserved</p>
                 </div>
                 <div className={styles["footer-links"]}>
-                    <Link to="#privacy-policy">Privacy Policy</Link>
-                    <Link to="#terms-and-conditions">Terms and Conditions</Link>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
+                    <Link to="/terms-and-conditions">Terms and Conditions</Link>
                 </div>
             </div>
             {children}

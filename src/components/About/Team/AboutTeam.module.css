@@ -1,0 +1,20 @@
+
+.team{
+    margin: 2rem 0;
+}
+
+.teamMembers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.member {
+    text-align: center;
+}
+
+.member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

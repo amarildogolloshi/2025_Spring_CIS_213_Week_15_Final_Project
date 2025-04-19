@@ -9,23 +9,24 @@ import RightSection from "./RightSection/RightSection";
 import Header from "./Header/Header"
 import Main from "./Main/Main";
 import UserProfileDropdown from "../UserProfileDropdown/UserProfileDropdown";
+import Navigation from "./Navigation/Navigation";
+import Breadcrumb from "../Breadcrumb/Breadcrumb";
 
 function PrivateLayout({ children }) {
     return (
         <div className={styles.container}>
             <Sidebar>
                 <Logo variant="inverted"/>
-                <p>Sidebar</p>
+                <Navigation />
             </Sidebar>
             
             <RightSection>
                 <Header>
-                   <UserProfileDropdown userName="Amarildo" />
+                   <UserProfileDropdown />
+                   <Breadcrumb/>
                 </Header>
                 <Main>
                     { children }
-                    <h2>Main Content</h2>
-                    <p>This is where your dashboard’s core content will go.</p>
                     <ScrollToTopButton />
                 </Main>
                 

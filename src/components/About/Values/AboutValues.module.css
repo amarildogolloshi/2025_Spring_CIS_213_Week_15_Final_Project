@@ -1,0 +1,13 @@
+.values {
+    margin: 2rem 0;
+}
+
+.values ul {
+    list-style: none;
+    padding: 0;
+}
+
+.values li {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}

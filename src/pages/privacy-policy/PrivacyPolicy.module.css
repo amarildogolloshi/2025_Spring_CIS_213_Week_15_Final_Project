@@ -1,0 +1,34 @@
+
+.container {
+    margin: auto;
+    background-color: #DDE6ED;;
+    padding: 20px;
+}
+.container h1, 
+.container h2 {
+    color: var(--pulse-blue);
+}
+.container  p {
+    
+    line-height: 1.6; /* Enhances readability */
+    margin-bottom: 12px; /* Adds space between paragraphs */
+    color: #333; /* Darker text for better contrast */
+}
+.container .contact {
+    font-weight: bold;
+}
+
+.container ul {
+    padding-left: 20px;
+}
+
+.container ol {
+    padding-left: 20px;
+    list-style-type: decimal; /* Uses numbers for ordered lists */
+}
+
+.container ul li,
+.container ol li{
+    padding: 6px 10px; /* Adds spacing inside list items */
+    list-style-type: disc; /* Keeps bullet points visible */
+}

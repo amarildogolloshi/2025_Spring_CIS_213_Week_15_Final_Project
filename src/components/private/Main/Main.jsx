@@ -5,7 +5,9 @@ const Main = ({children}) => {
 
   return (
     <main id="main" className={styles.main}> 
-       { children }
+      <section>
+        { children }
+      </section>
     </main>
   )
 

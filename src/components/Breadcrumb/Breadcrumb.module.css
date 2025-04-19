@@ -1,0 +1,36 @@
+.breadcrumb {
+    display: flex;
+    gap: 80px !important;
+    font-size: 14px;
+    /* padding: 8px; */
+  }
+  
+  .breadcrumb ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap:0 !important;
+  }
+  
+  .breadcrumb li {
+    margin-right: 0.3rem !important;
+  }
+  
+  .breadcrumb li::after {
+    content: "/";
+    margin-left: 0.3rem !important;
+    color: gray;
+  }
+  
+  .breadcrumb li:last-child::after {
+    content: ""; /* Removes arrow for last item */
+  }
+  
+  .breadcrumb a {
+    text-decoration: none;
+    /* color: blue; */
+    text-transform: capitalize;
+    padding: 0.5rem !important;
+  }
+  
+  

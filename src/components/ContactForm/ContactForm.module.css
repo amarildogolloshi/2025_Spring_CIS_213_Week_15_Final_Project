@@ -1,0 +1,43 @@
+
+.contactFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: auto;
+}
+
+.contactForm .form-group input,
+.contactForm .form-group select,
+.contactForm .form-group button,
+.contactForm .form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.contactForm .form-group button {
+    background-color: #005999;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contactForm .form-group button:hover {
+    background-color: #004488;
+}
+
+.hidden{
+    display: none;
+}

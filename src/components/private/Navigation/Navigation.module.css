@@ -1,0 +1,52 @@
+.sidebar ul {
+  list-style: none;
+  padding: 2.5rem 0;
+}
+
+.sidebar ul li {
+  padding: 1rem 0;
+}
+
+.sidebar ul li a {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.dropdownButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdownMenu {
+  background-color: #333;
+  padding: 1rem !important;
+  border-radius: 8px;
+  background-color: white;
+  
+  display: flex;
+  flex-direction: column;
+}
+.dropdownMenu li {
+  padding: 0.5rem !important;
+}
+
+.dropdownMenu li a {
+  color:#2c3e50 !important;
+  text-decoration: none;
+}
+
+.dropdownMenu li a:hover {
+  color: white;
+}

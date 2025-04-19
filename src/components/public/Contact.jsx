@@ -1,3 +1,4 @@
+import ContactForm from "../ContactForm/ContactForm";
 import styles from "./Contact.module.css";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
@@ -12,7 +13,8 @@ function Contact() {
                 <div className={styles.contactContainer}>
                     <div className={styles.contactFormContainer}>
                         {/*  Contact Form */}
-                        <form className={styles.contactForm}>
+                        <ContactForm/>
+                        {/* <form className={styles.contactForm}>
                             <label>
                                 Name:
                                 <input type="text" name="name" placeholder="Enter your name" />
@@ -26,7 +28,7 @@ function Contact() {
                                 <textarea name="message" placeholder="Your message..."></textarea>
                             </label>
                             <button type="submit">Send Message</button>
-                        </form>
+                        </form> */}
                     </div>
                     <div className={styles.contactInfoContainer}>
                     {/*  Phone Number */}

@@ -8,3 +8,14 @@
     overflow-y: auto; /* Scrollable content */
 
 }
+
+.main section {
+    background-color: white; /* White background */
+    padding: 20px;
+    border-radius: 12px; /* Rounded borders */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    /* max-width: 500px; */
+    /* margin: 40px auto; */
+    display: flex;
+    flex-direction: column;
+}
