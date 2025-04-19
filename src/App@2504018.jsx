@@ -12,7 +12,6 @@ import ForgotPassword from './pages/forgot-password/ForgotPassword.jsx'
 import PrivateLayout from "./components/private/PrivateLayout.jsx";
 import useLocalStorage from "./hooks/useLocalStorage.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const {user, dispatch, login} = useContext(UserContext);
@@ -29,25 +28,40 @@ function App() {
       login(user, mockToken )
     }
 
-    if (!user?.isLoggedIn) {
-      dispatch({
-          type: "LOAD_USER"
-      })
+    if (!user.isLoggedIn) {
+      //console.log("Check for user data")
+      const userData = JSON.parse(localStorage.getItem("user"));
+      //console.log(userData)
+      if (userData) {
+          dispatch({
+              type: "LOAD_USER",
+              payload: userData
+          })
+      }
     }
     
-  }, [user?.isLoggedIn]);
-  return (
-    
+  }, [user.isLoggedIn]);
+  return user.isLoggedIn ? (
+      <PrivateLayout>
+        <Routes>
+          <Route path='dashboard' element={<Dashboard />}/>
+          <Route path='*' element={<NotFound />}/>
+        </Routes>
+      </PrivateLayout>
+    ) : (
+      <PublicLayout>
         <Routes>
           <Route index element={<Home />}/>
           <Route path='signin' element={<SignIn />}/>
           <Route path='support' element={<Support />}/>
-          <Route path='dashboard' element={<ProtectedRoute element={<Dashboard />} />}/>
+          <Route path='dashboard' element={<Dashboard />}/>
           <Route path='signup' element={<SignUp />}/>
           <Route path='forgotpassword' element={<ForgotPassword />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
-  )
+    </PublicLayout>
+    
+    )
 }
 
 export default App

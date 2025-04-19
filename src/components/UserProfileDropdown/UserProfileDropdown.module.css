@@ -1,0 +1,58 @@
+.profileContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profileButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    min-width: 150px;
+  }
+  
+  .logoutButton {
+    background-color: transparent;
+    color: var(--nav-text-color);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+  }
+  .logoutButton:hover {
+    /* background-color: #c0392b; */
+  }
+  
+  .logoutButton svg {
+    font-size: 20px; /* Adjust icon size */
+  }
+  
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .icon {
+    color: white;
+    font-size: 24px;
+  }

@@ -4,10 +4,21 @@ import { v4 as uuidv4 } from "uuid";
 export const initialState = [];
 
 export function userReducer(state, action) {
+    let  userData = null;
     switch (action.type) {
+        case "LOAD_USER":
+            userData = JSON.parse(localStorage.getItem("user"));
+            if (userData) {
+                return {  ...userData };
+            } else {
+                return state
+            }
+
+            
         case "SIGN_IN":
+            console.log("SIGN_IN")
             // Try to find the user
-            const userData = DATA.find((user) => 
+            userData = DATA.find((user) => 
                 user.username == action.payload.username && user.password == action.payload.password
             );
 
@@ -45,11 +56,9 @@ export function userReducer(state, action) {
                     isLoggedIn: true,
                 };
             } else {
-                setUser({ isLoggedIn: false });
                 return state;
             }
         case "LOGOUT":
-
             return []
         default:
             return state;

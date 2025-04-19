@@ -1,14 +1,34 @@
-import { use } from "react";
-import UserContext from "../../../store/UserContextProvider";
+import { useContext, useEffect } from "react";
+import UserContext from "../../store/UserContextProvider";
+import { useNavigate } from "react-router-dom";
+import PrivateLayout from "../../components/private/PrivateLayout";
 
 function Dashboard() {
-    const {user, dispatch} = use(UserContext);
     
+    const {user} = useContext(UserContext);
+    // const userData = JSON.parse(localStorage.getItem("user"));    
+    const navigate = useNavigate();
+    
+    console.log("Dashboard user: " + user)
+    console.log(user?.isLoggedIn)
+    // console.log("userData:" + userData?.isLoggedIn)
+
+    //Only redirect when "user" changes
+    useEffect(() => {
+        console.log("Dashboard:useEffect")
+        if (!user?.isLoggedIn) {
+            navigate("/signin");
+        }
+    }, [user?.isLoggedIn]);
+
     return (
-        <section>
-            Welcome to the Dashboard: {user.username}
-        </section>
-    );
+        <PrivateLayout>
+            <section>
+                Welcome to the Dashboard: {user?.username || "Guest"}
+            </section>
+        </PrivateLayout>
+        
+    ) 
 }
 
 export default Dashboard;

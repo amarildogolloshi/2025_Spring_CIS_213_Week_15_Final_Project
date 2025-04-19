@@ -1,0 +1,10 @@
+.main {
+    flex: 1; /* Takes up remaining vertical space */
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto; /* Scrollable content */
+
+}

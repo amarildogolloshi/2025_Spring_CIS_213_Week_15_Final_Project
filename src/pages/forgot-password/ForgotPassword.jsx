@@ -1,12 +1,13 @@
-import { use, useEffect } from "react";
+import { use, useContext, useEffect } from "react";
 import { useState } from "react";
 import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router";
 import styles from "../UserLoginControl.module.css";
 import { NavLink } from "react-router-dom";
+import PublicLayout from "../../components/public/PublicLayout";
 
 function ForgotPassword() {
-    const {user, dispatch} = use(UserContext);
+    const {user, dispatch} = useContext(UserContext);
         const navigate = useNavigate();     // For redirecting to Dashboard upon successful login
         const [emailInput, setEmailInput] = useState("");
         
@@ -24,27 +25,29 @@ function ForgotPassword() {
             });
         }
     return (
-        <section className={styles.section}>
-            <form onSubmit={handleSubmit}>
-            <h2> Forgot Password</h2>
-                <div className={styles["form-body"]}>
-                    
-                    <div className={styles["form-group"]}>
-                        <label>Email: </label>
-                        <input type="text" value={emailInput} onChange={handleEmailInput}/>
+        <PublicLayout>
+            <section className={styles.section}>
+                <form onSubmit={handleSubmit}>
+                <h2> Forgot Password</h2>
+                    <div className={styles["form-body"]}>
+                        
+                        <div className={styles["form-group"]}>
+                            <label>Email: </label>
+                            <input type="text" value={emailInput} onChange={handleEmailInput}/>
+                        </div>
+                        
+                        <button type="submit">Send Email</button>
                     </div>
                     
-                    <button type="submit">Send Email</button>
-                </div>
+                    <div className={styles["form-footer"]}>
+                        <NavLink to={"/signin"}>Sign In!</NavLink>
+                        <NavLink to={"/signup"}>Sign Up!</NavLink>
+                    </div> 
+                    
+                </form>
                 
-                <div className={styles["form-footer"]}>
-                    <NavLink to={"/signin"}>Sign In!</NavLink>
-                    <NavLink to={"/signup"}>Sign Up!</NavLink>
-                </div> 
-                
-            </form>
-            
-        </section>
+            </section>
+        </PublicLayout>
     );
 }
 

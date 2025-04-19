@@ -12,7 +12,6 @@ import ForgotPassword from './pages/forgot-password/ForgotPassword.jsx'
 import PrivateLayout from "./components/private/PrivateLayout.jsx";
 import useLocalStorage from "./hooks/useLocalStorage.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const {user, dispatch, login} = useContext(UserContext);
@@ -42,10 +41,11 @@ function App() {
           <Route index element={<Home />}/>
           <Route path='signin' element={<SignIn />}/>
           <Route path='support' element={<Support />}/>
-          <Route path='dashboard' element={<ProtectedRoute element={<Dashboard />} />}/>
+          <Route path='dashboard' element={<Dashboard />}/>
           <Route path='signup' element={<SignUp />}/>
           <Route path='forgotpassword' element={<ForgotPassword />} />
           <Route path='*' element={<NotFound />}/>
+          <Route path='dashboard' element={<Dashboard />}/>
         </Routes>
   )
 }

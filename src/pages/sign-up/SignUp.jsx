@@ -1,14 +1,15 @@
-import { use, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router";
 import styles from "../UserLoginControl.module.css";
 import { NavLink } from "react-router-dom";
 import useInput from "../../hooks/useInput";
+import PublicLayout from "../../components/public/PublicLayout";
 
 const ERROR_STYLE = {"color": "var(--error-red)"};
 
 function SignUp() {
-    const {user, dispatch} = use(UserContext);
+    const {user, dispatch} = useContext(UserContext);
     const navigate = useNavigate();     // For redirecting to Dashboard upon successful login
     const [userController, userErrorController] = useInput("");
     const [emailController, emailErrorController] = useInput("");
@@ -113,48 +114,50 @@ function SignUp() {
     }, [user]);
 
     return (
-        <section className={styles.section}>
-            <form onSubmit={handleSubmit}>
-                <h2>Sing Up</h2>
-                <div className={styles["form-body"]}>
-                    <div className={styles["form-group"]}>
-                        <label style={userErrorController.error ? ERROR_STYLE : {}}>Username: </label>
-                        <span style={ERROR_STYLE}>{userErrorController.error && userErrorController.errorMessage}</span>
-                        <input type="text" value={userController.value} onChange={(e) => userController.handleUpdateValue(e.target.value)}/>
-                    </div>
+        <PublicLayout>
+            <section className={styles.section}>
+                <form onSubmit={handleSubmit}>
+                    <h2>Sign Up</h2>
+                    <div className={styles["form-body"]}>
+                        <div className={styles["form-group"]}>
+                            <label style={userErrorController.error ? ERROR_STYLE : {}}>Username: </label>
+                            <span style={ERROR_STYLE}>{userErrorController.error && userErrorController.errorMessage}</span>
+                            <input type="text" value={userController.value} onChange={(e) => userController.handleUpdateValue(e.target.value)}/>
+                        </div>
 
-                    <div className={styles["form-group"]}>
-                        <label style={emailErrorController.error ? ERROR_STYLE : {}}>Email: </label>
-                        <span style={ERROR_STYLE}>{emailErrorController.error && emailErrorController.errorMessage}</span>
-                        <input type="text" value={emailController.value} onChange={(e) => emailController.handleUpdateValue(e.target.value)}/>
-                    </div>
-                    <div className={styles["form-group"]}>
-                        <label style={companyErrorController.error ? ERROR_STYLE : {}}>Company: </label>
-                        <span style={ERROR_STYLE}>{companyErrorController.error && companyErrorController.errorMessage}</span>
-                        <input type="text" value={companyController.value} onChange={(e) => companyController.handleUpdateValue(e.target.value)}/>
+                        <div className={styles["form-group"]}>
+                            <label style={emailErrorController.error ? ERROR_STYLE : {}}>Email: </label>
+                            <span style={ERROR_STYLE}>{emailErrorController.error && emailErrorController.errorMessage}</span>
+                            <input type="text" value={emailController.value} onChange={(e) => emailController.handleUpdateValue(e.target.value)}/>
+                        </div>
+                        <div className={styles["form-group"]}>
+                            <label style={companyErrorController.error ? ERROR_STYLE : {}}>Company: </label>
+                            <span style={ERROR_STYLE}>{companyErrorController.error && companyErrorController.errorMessage}</span>
+                            <input type="text" value={companyController.value} onChange={(e) => companyController.handleUpdateValue(e.target.value)}/>
+                        </div>
+                        
+                        <div className={styles["form-group"]}>
+                            <label style={passErrorController.error ? ERROR_STYLE : {}}>Password: </label> 
+                            <span style={ERROR_STYLE}>{passErrorController.error && passErrorController.errorMessage}</span>
+                            <input type="password" value={passController.value} onChange={(e) => passController.handleUpdateValue(e.target.value)}/>
+                        </div>
+
+                        <div className={styles["form-group"]}>
+                            <label style={rePassErrorController.error ? ERROR_STYLE : {}}>Re-enter Password: </label> 
+                            <span style={ERROR_STYLE}>{rePassErrorController.error && rePassErrorController.errorMessage}</span>
+                            <input type="password" value={rePassController.value} onChange={(e) => rePassController.handleUpdateValue(e.target.value)}/>
+                        </div>
+                                            
+                        <button type="submit">Sign Up</button>
                     </div>
                     
-                    <div className={styles["form-group"]}>
-                        <label style={passErrorController.error ? ERROR_STYLE : {}}>Password: </label> 
-                        <span style={ERROR_STYLE}>{passErrorController.error && passErrorController.errorMessage}</span>
-                        <input type="password" value={passController.value} onChange={(e) => passController.handleUpdateValue(e.target.value)}/>
+                    <div className={styles["form-footer"]}>
+                        <NavLink to={"/forgotpassword"}>Forgot Password?</NavLink>
+                        <NavLink to={"/signin"}>Sign In!</NavLink>
                     </div>
-
-                    <div className={styles["form-group"]}>
-                        <label style={rePassErrorController.error ? ERROR_STYLE : {}}>Re-enter Password: </label> 
-                        <span style={ERROR_STYLE}>{rePassErrorController.error && rePassErrorController.errorMessage}</span>
-                        <input type="password" value={rePassController.value} onChange={(e) => rePassController.handleUpdateValue(e.target.value)}/>
-                    </div>
-                                        
-                    <button type="submit">Sign Up</button>
-                </div>
-                
-                <div className={styles["form-footer"]}>
-                    <NavLink to={"/forgotpassword"}>Forgot Password?</NavLink>
-                    <NavLink to={"/signin"}>Sign In!</NavLink>
-                </div>
-            </form>
-        </section>
+                </form>
+            </section>
+        </PublicLayout>
     );
 }
 

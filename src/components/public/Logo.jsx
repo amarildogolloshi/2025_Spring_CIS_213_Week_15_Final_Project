@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import logo from "/images/logo.png";
+import regularlogo from "/images/logo.png";
+import invertedlogo from "/images/logo-invert.png";
 import styles from "./Logo.module.css";
 
-const Logo = () => {
+const Logo = ({variant = "regular"}) => {
+    const logoSrc = variant === "inverted" ? invertedlogo : regularlogo
     return (
-            <Link className={styles.logo} to="/">
-                <img src={logo} alt="Pulse Logo" />
-                Pulse
+            <Link className={styles.logo} to="/" aria-label="Go to Homepage">
+                <img src={logoSrc} alt="Pulse Logo" className={variant} />
+                <span className={styles[variant]}>Pulse</span>
             </Link>
     );
 }

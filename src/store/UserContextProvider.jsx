@@ -18,6 +18,7 @@ export function UserContextProvider({ children }) {
     const logout = () => {
         removeUserLs();
         removeTokenLs();
+        // dispatch({ type: "LOGOUT" });
     };
 
     return (
