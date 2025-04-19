@@ -1,0 +1,34 @@
+.faqContainer {
+    padding: 15px;
+    /* background: rgba(255, 255, 255, 0.9); */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.faqItem {
+    margin-bottom: 10px;
+}
+
+.faqButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--pulse-blue);
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+.faqButton:hover {
+    text-decoration: underline;
+}
+
+.faqItem p {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+}

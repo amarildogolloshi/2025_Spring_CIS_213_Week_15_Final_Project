@@ -4,7 +4,7 @@ import styles from "./NavComponents.module.css";
 function SignInNav() {
     const navLinks = [
         {to: "/", text: "Home", target: ""},
-        {to: "/support", text: "Support", target: "_blank"},
+        {to: "/support", text: "Support"},
         // {to: "/support", text: "Support"},
     ];
 

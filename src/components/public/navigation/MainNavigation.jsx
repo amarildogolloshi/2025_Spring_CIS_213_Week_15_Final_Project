@@ -14,13 +14,12 @@ function MainNavigation() {
             navRender = <HomeNav />;
             break;
         case "/signin":
+        case "/signup":
+        case "/forgotpassword":
             navRender = <SignInNav />;
             break;
         case "/support":
-            navRender = undefined;  // Support is a separate page; no nav
-            break;
-        case "/dashboard":
-            navRender = undefined;  // Support is a separate page; no nav
+            navRender = <HomeNav />;  // Support is a separate page; no nav
             break;
         default:
             navRender = <HomeNav />;

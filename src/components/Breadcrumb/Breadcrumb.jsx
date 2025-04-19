@@ -10,7 +10,7 @@ const Breadcrumb = () => {
       <ul>
         <li><Link to="/">Home</Link></li>
         {pathSegments.map((segment, index) => {
-          const path = `/${pathSegments.slice(0, index + 1).join("/")}`;
+          const path = `/pulse/${pathSegments.slice(0, index + 1).join("/")}`;
           return (
             <li key={index}>
               <Link to={path}>{segment.replace("-", " ")}</Link>

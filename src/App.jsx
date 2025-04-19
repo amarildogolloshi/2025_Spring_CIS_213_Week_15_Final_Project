@@ -56,6 +56,7 @@ function App() {
           <Route path='signin' element={<SignIn />}/>
           <Route path='support' element={<Support />}/>
           <Route path='signup' element={<SignUp />}/>
+          <Route path='forgotpassword' element={<ForgotPassword />}/>
           <Route path='about' element={<AboutPage />} />
           <Route path='contact' element={ <ContactPage/>} />
           <Route path='privacy-policy' element={<PrivacyPolicy />} />
