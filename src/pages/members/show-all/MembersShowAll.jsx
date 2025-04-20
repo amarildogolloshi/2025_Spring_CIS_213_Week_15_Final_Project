@@ -18,7 +18,18 @@ function MembersShowAll() {
 
     return (
         <PrivateLayout>
-            <p>MembersShowAll</p>
+            <h3>View All Members</h3>
+            <ul>
+                {
+                    user.members.map((member) => 
+                        <li key={member.id}>
+                            {member.firstName}
+                            {member.lastName}
+                            {member.socialLink}
+                        </li>
+                    )
+                }
+            </ul>
         </PrivateLayout>
         
     ) 

@@ -60,6 +60,23 @@ export function userReducer(state, action) {
             }
         case "LOGOUT":
             return []
+        case "ADD_MEMBER":
+            // Backend validation
+            let backendValidation2 = true;
+            if (backendValidation2) {
+                return {
+                    ...state,   // Unpack all state info
+                    members: [
+                        ...state.members,   // Unpack previous members
+                        {                   // Add new member
+                            "id": uuidv4(),
+                            ...action.payload,
+                        }
+                    ]
+                }
+            }
+
+            return state;
         default:
             return state;
     }
@@ -77,26 +94,21 @@ const DATA = [
             {
                 id: uuidv4(),
                 name: "Event 1",
-                eventMembers: [
-                    {
-                        firstName: "Sally",
-                        lastName: "Twoshoes",
-                    },
-                    {
-                        firstName: "Bart",
-                        lastName: "Simpson",
-                    },
-                ]
+                eventMembers: [12345, 12346],
             },
         ],
         members: [
             {
+                id: 12345,
                 firstName: "Sally",
                 lastName: "Twoshoes",
+                socialLink: "https://google.com",
             },
             {
+                id: 12346,
                 firstName: "Bart",
                 lastName: "Simpson",
+                socialLink: "https://google.com",
             },
         ],
     },
