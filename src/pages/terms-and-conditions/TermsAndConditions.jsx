@@ -6,7 +6,7 @@ function TermsAndConditions() {
         <PublicLayout>
                <div className={styles.container}>
                     <h1>Terms and Conditions</h1>
-                    <p><strong>Effective Date:</strong> [Insert Date]</p>
+                    <p><strong>Effective Date:</strong> 01/19/2025</p>
                     <p>By using **Pulse**, you agree to the following terms. If you do not agree, please discontinue use of the service.</p>
 
                     <h2>1. Use of the Platform</h2>

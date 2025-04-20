@@ -25,6 +25,7 @@ import TermsAndConditions from "./pages/terms-and-conditions/TermsAndConditions.
 
 import ContactPage from "./pages/contact/ContactPage.jsx";
 import AboutPage from "./pages/about/AboutPage.jsx";
+import FAQPage from "./pages/faq-page/FAQPage.jsx";
 
 function App() {
   const {user, dispatch, login} = useContext(UserContext);
@@ -59,6 +60,7 @@ function App() {
           <Route path='forgotpassword' element={<ForgotPassword />}/>
           <Route path='about' element={<AboutPage />} />
           <Route path='contact' element={ <ContactPage/>} />
+          <Route path='faq' element={ <FAQPage/>} />
           <Route path='privacy-policy' element={<PrivacyPolicy />} />
           <Route path='terms-and-conditions' element={ <TermsAndConditions/>} />
 

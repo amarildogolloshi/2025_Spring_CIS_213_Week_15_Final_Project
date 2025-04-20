@@ -4,6 +4,7 @@ import styles from "./Support.module.css";
 
 import { FaExclamationCircle, FaLightbulb, FaQuestionCircle, FaPhoneAlt } from "react-icons/fa";
 import SupportPanel from "../../components/SupportPanel/SupportPanel";
+import { Link } from "react-router-dom";
 
 const faqData = [
     { question: "How do I reset my password?", answer: "Go to the account settings page and click 'Reset Password'." },
@@ -46,7 +47,8 @@ function Support() {
                             <h2> Frequently Asked Questions</h2>
                         </div>
                         <p>Find answers to common questions.</p>
-                        <a href="#" onClick={(e) => { e.preventDefault(); setActivePanel("faq"); }}>Visit FAQ</a>
+                        {/* <a href="#" onClick={(e) => { e.preventDefault(); setActivePanel("faq"); }}>Visit FAQ</a> */}
+                        <Link to="/faq" >Visit FAQ</Link>
                     </div>
 
                     <div className={styles["support-box"]}>
@@ -56,7 +58,8 @@ function Support() {
                         </div>
                         
                         <p>Need direct assistance? Reach out to our team.</p>
-                        <a href="#" onClick={(e) => { e.preventDefault(); setActivePanel("contact"); }}>Get in Touch</a>
+                        {/* <a href="#" onClick={(e) => { e.preventDefault(); setActivePanel("contact"); }}>Get in Touch</a> */}
+                        <Link to="/contact" >Get in Touch</Link>
                     </div>
                 </div>
 

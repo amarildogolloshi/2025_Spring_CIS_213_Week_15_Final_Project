@@ -1,0 +1,18 @@
+
+
+.contactInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactInfo {
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contactInfo p {
+    padding: 1rem 0;
+}

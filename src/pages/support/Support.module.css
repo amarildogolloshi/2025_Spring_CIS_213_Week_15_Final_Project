@@ -1,7 +1,7 @@
 .support {
     display: flex;
     flex-direction: column;
-    padding: 3rem;
+    padding: 1rem 0;
 }
 
 .support h1 {
@@ -15,11 +15,12 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 1rem 0;
 }
 
 .support .support-box-container .support-box {
-    flex: 1 1 300px;
-    max-width: 400px;
+    flex: 1 1 400px;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     background: white;
