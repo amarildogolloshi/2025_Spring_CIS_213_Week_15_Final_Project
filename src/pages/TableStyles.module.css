@@ -1,0 +1,33 @@
+.table {
+    width: 80%;
+    margin: 1em auto;
+    border-collapse: collapse;
+    border: 2px solid var(--header-border-bottom);
+    letter-spacing: 1px;
+}
+
+.table thead, tfoot {
+    background-color: var(--textbox-light-blue);
+}
+
+.table th, td {
+    border: 1px solid var(--header-border-bottom);
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.table tr:nth-of-type(even) {
+    background-color: var(--table-alternate-row-color);
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.table tfoot th {
+    text-align: right;
+}
+
+.table tfoot td {
+    text-align: left;
+}

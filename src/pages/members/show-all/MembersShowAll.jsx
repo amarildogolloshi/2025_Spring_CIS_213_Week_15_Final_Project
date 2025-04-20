@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../../store/UserContextProvider";
 import PrivateLayout from "../../../components/private/PrivateLayout";
+import styles from '../Members.module.css';
+import tableStyles from '../../TableStyles.module.css';
 
 function MembersShowAll() {
     
@@ -19,17 +21,30 @@ function MembersShowAll() {
     return (
         <PrivateLayout>
             <h3>View All Members</h3>
-            <ul>
-                {
-                    user.members.map((member) => 
-                        <li key={member.id}>
-                            {member.firstName}
-                            {member.lastName}
-                            {member.socialLink}
-                        </li>
-                    )
-                }
-            </ul>
+            <table className={tableStyles.table}>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Social Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {user.members.map((member) => (
+                        <tr key={member.id}>
+                            <th>{member.firstName}</th>
+                            <td>{member.lastName}</td>
+                            <td>{member.socialLink}</td>
+                        </tr>
+                    ))}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colSpan="2">Total members</th>
+                        <td>{user.members.length}</td>
+                    </tr>
+                </tfoot>
+            </table>
         </PrivateLayout>
         
     ) 

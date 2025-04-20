@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../../../store/UserContextProvider";
 import PrivateLayout from "../../../components/private/PrivateLayout";
 import useInput from "../../../hooks/useInput";
+import styles from '../Members.module.css';
 
 const ERROR_STYLE = {"color": "var(--error-red)"};
 const SUCCESS_STYLE = {"color": "var(--success-green)"};
@@ -88,7 +89,7 @@ function MemberCreate() {
         <PrivateLayout>
             <h3>Create a new Member</h3>
             <span style={SUCCESS_STYLE}>{operationFeedback}</span>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <div>
                     <label>Member First Name: </label>
                     <span style={ERROR_STYLE}>

@@ -44,6 +44,7 @@ h2 {
     --textbox-light-blue: #E8F0FE;
     --error-red: #ff2c2c;
     --success-green: #008000;
+    --table-alternate-row-color: rgb(237 238 242);
     --app-desktop-width:60rem;
 }
 
