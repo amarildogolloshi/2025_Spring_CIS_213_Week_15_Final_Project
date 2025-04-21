@@ -74,6 +74,35 @@ export function userReducer(state, action) {
                     ]
                 }
             }
+
+        case "UPDATE_MEMBER":
+            // Backend validation
+            let backendValidation4 = true;
+            if (backendValidation4) {
+                return {
+                    ...state,   // Unpack all state info
+                    // Find and update target member using payload id
+                    members: state.members.map((member) => member.id == action.payload.id ? 
+                        action.payload : member
+                    ),
+                }
+            }
+
+            return state;
+        
+        case "DELETE_MEMBER":
+            // Backend validation
+            let backendValidation5 = true;
+            if (backendValidation5) {
+                return {
+                    ...state,   // Unpack all state info
+                    // Filter out target member
+                    members: state.members.filter((member) => member.id != action.payload.id),
+                }
+            }
+
+            return state;
+
         case "LOGOUT":
             return []
         case "ADD_MEMBER":

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../../../store/UserContextProvider";
 import PrivateLayout from "../../../components/private/PrivateLayout";
 import tableStyles from '../../TableStyles.module.css';
+import TableRow from "../table-row/TableRow";
 
 function MembersShowAll() {
-    
-    const {user} = useContext(UserContext);
+    const {user, dispatch} = useContext(UserContext);
     // const userData = JSON.parse(localStorage.getItem("user"));    
     const navigate = useNavigate();
 
@@ -26,20 +26,23 @@ function MembersShowAll() {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Social Link</th>
+                        <th>Edit Member</th>
+                        <th>Delete Member</th>
                     </tr>
                 </thead>
                 <tbody>
                     {user.members.map((member) => (
-                        <tr key={member.id}>
-                            <th>{member.firstName}</th>
-                            <td>{member.lastName}</td>
-                            <td>{member.socialLink}</td>
-                        </tr>
+                        <TableRow key={member.id}
+                            id={member.id}
+                            firstName={member.firstName} 
+                            lastName={member.lastName} 
+                            socialLink={member.socialLink}
+                        />
                     ))}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colSpan="2">Total members</th>
+                        <th colSpan="4">Total members</th>
                         <td>{user.members.length}</td>
                     </tr>
                 </tfoot>
