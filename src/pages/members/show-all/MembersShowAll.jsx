@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../../store/UserContextProvider";
 import PrivateLayout from "../../../components/private/PrivateLayout";
-import styles from '../Members.module.css';
 import tableStyles from '../../TableStyles.module.css';
 
 function MembersShowAll() {

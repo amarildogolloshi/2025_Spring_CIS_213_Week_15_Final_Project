@@ -25,6 +25,16 @@
     color: var(--nav-text-color);
 }
 
+.form input.inputTime {
+    width: fit-content;
+    padding: .35em .5em;
+    margin-bottom: 1em;
+    border-radius: 20px;
+    border: 1px solid var(--header-border-bottom);
+    font-size: 1.15em;
+    color: var(--nav-text-color);
+}
+
 .form input:focus-visible {
     border: 1px solid var(--light-border-blue);
     outline: none;

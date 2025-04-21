@@ -75,10 +75,10 @@ function MemberCreate() {
                     lastName: lNameController.value,
                     socialLink: mediaController.value,
                 }
-            })
+            });
 
             // Provide success feedback & reset input values
-            setOperationFeedback(`${fNameController.value} successfully added.`);
+            setOperationFeedback(`${fNameController.value} successfully created.`);
             fNameController.handleUpdateValue("");
             lNameController.handleUpdateValue("");
             mediaController.handleUpdateValue("");

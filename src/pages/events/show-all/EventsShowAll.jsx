@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../../store/UserContextProvider";
 import PrivateLayout from "../../../components/private/PrivateLayout";
+import tableStyles from '../../TableStyles.module.css';
 
 function EventsShowAll() {
     
@@ -18,7 +19,33 @@ function EventsShowAll() {
 
     return (
         <PrivateLayout>
-            <p>EventsShowAll</p>
+            <h3>View Events</h3>
+            <table className={tableStyles.table}>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Total Members</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {user.events.map((event) => (
+                        <tr key={event.id}>
+                            <th>{event.name}</th>
+                            <td>{event.startTime}</td>
+                            <td>{event.endTime}</td>
+                            <td>{event.eventMembers.length}</td>
+                        </tr>
+                    ))}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colSpan="3">Total events</th>
+                        <td>{user.events.length}</td>
+                    </tr>
+                </tfoot>
+            </table>
         </PrivateLayout>
         
     ) 

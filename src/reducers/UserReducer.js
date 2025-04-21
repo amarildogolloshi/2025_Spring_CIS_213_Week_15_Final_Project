@@ -58,6 +58,22 @@ export function userReducer(state, action) {
             } else {
                 return state;
             }
+
+        case "ADD_EVENT":
+            // Backend validation
+            let backendValidation3 = true;
+            if (backendValidation3) {
+                return {
+                    ...state,   // Unpack all state info
+                    events: [
+                        ...state.events,    // Unpack previous events
+                        {                   // Add new event
+                            id: uuidv4(),
+                            ...action.payload,
+                        },
+                    ]
+                }
+            }
         case "LOGOUT":
             return []
         case "ADD_MEMBER":
@@ -95,6 +111,8 @@ const DATA = [
                 id: uuidv4(),
                 name: "Event 1",
                 eventMembers: [12345, 12346],
+                startTime: "2025-04-15T10:04",
+                endTime: "2025-04-16T10:04"
             },
         ],
         members: [
