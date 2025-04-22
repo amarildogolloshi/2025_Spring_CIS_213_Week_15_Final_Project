@@ -115,6 +115,8 @@ export function userReducer(state, action) {
                         ...state.members,   // Unpack previous members
                         {                   // Add new member
                             "id": uuidv4(),
+                            followerInit: 500,
+                            followerCurrent: 600,
                             ...action.payload,
                         }
                     ]
@@ -150,12 +152,16 @@ const DATA = [
                 firstName: "Sally",
                 lastName: "Twoshoes",
                 socialLink: "https://google.com",
+                followerInit: 1000,
+                followerCurrent: 1100,
             },
             {
                 id: 12346,
                 firstName: "Bart",
                 lastName: "Simpson",
                 socialLink: "https://google.com",
+                followerInit: 900,
+                followerCurrent: 850,
             },
         ],
     },

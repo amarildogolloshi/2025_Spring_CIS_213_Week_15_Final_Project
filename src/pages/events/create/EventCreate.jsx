@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import UserContext from "../../../store/UserContextProvider";
 import PrivateLayout from "../../../components/private/PrivateLayout";
 import useInput from "../../../hooks/useInput";
@@ -8,6 +8,8 @@ import { faL, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const ERROR_STYLE = {"color": "var(--error-red)"};
 const SUCCESS_STYLE = {"color": "var(--success-green)"};
+const P_STYLE = {"fontStyle": "italic"};
+const INLINK_STYLE = {"color": "var(--pulse-blue)"};
 
 function EventCreate() {
     const {user, dispatch} = useContext(UserContext);
@@ -99,6 +101,7 @@ function EventCreate() {
     return (
         <PrivateLayout>
             <h3>Create a new Event</h3>
+            <p style={P_STYLE}>Add Members to Events in <Link style={INLINK_STYLE} to="/pulse/events">Events &gt; Show All</Link></p>
             <span style={SUCCESS_STYLE}>{operationFeedback}</span>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div>

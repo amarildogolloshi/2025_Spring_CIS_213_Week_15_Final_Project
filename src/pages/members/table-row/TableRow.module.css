@@ -1,0 +1,49 @@
+.updateBtn {
+    background-color: var(--success-green);
+    color: var(--default-white);
+    margin-right: .5em;
+}
+
+.updateBtn:hover {
+    box-shadow: 0 0 2px var(--success-green);
+    color: var(--success-green);
+}
+
+.toggleBtn {
+    background-color: var(--light-border-blue);
+    color: var(--default-white);
+    border: 1px solid var(--header-border-bottom);
+}
+
+.toggleBtn:hover {
+    color: var(--light-border-blue);
+    box-shadow: 0 0 2px var(--light-border-blue);
+}
+
+.deleteBtn {
+    background-color: var(--error-red);
+    color: var(--default-white);
+}
+
+.deleteBtn:hover {
+    box-shadow: 0 0 2px var(--error-red);
+    color: var(--error-red);
+}
+
+.btn {
+    padding: .5em .75em;
+    border-radius: 5px;
+    border: 1px solid var(--textbox-light-blue);
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.tdMultiBtn {
+    display: flex;
+}
+
+.btn:hover {
+    background-color: var(--default-white);
+}

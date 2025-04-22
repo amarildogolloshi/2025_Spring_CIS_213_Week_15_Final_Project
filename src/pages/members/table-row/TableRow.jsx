@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import UserContext from "../../../store/UserContextProvider";
 import useInput from "../../../hooks/useInput";
+import styles from "./TableRow.module.css";
 
 // Component for updating Member information inside the View All Members table.
-function TableRow({ id, firstName, lastName, socialLink }) {
+function TableRow({ id, firstName, lastName, socialLink, followerStart, followerCurrent }) {
     const {user, dispatch} = useContext(UserContext);
     const [editView, setEditView] = useState(false);
     const [fNameController, fNameErrorController] = useInput(firstName);
@@ -22,6 +23,8 @@ function TableRow({ id, firstName, lastName, socialLink }) {
                     firstName: fNameController.value,
                     lastName: lNameController.value,
                     socialLink: mediaController.value,
+                    followerInit: followerStart,
+                    followerCurrent,
                 }
             })
         }
@@ -69,12 +72,14 @@ function TableRow({ id, firstName, lastName, socialLink }) {
                         onChange={(e) => mediaController.handleUpdateValue(e.target.value)}
                     />
                 </td>
-                <td>
-                    <button onClick={handleUpdate}>Update</button>
-                    <button onClick={handleEditBtn}>Cancel</button>
+                <td>{followerStart}</td>
+                <td>{followerCurrent}</td>
+                <td className={styles.tdMultiBtn}>
+                    <button className={styles.updateBtn + " " + styles.btn} onClick={handleUpdate}>Update</button>
+                    <button className={styles.toggleBtn + " " + styles.btn} onClick={handleEditBtn}>Cancel</button>
                 </td>
                 <td>
-                    <button onClick={handleDeleteBtn}>Delete</button>
+                    <button className={styles.deleteBtn + " " + styles.btn} onClick={handleDeleteBtn}>Delete</button>
                 </td>
             </>
             :   
@@ -82,11 +87,13 @@ function TableRow({ id, firstName, lastName, socialLink }) {
                 <td>{firstName}</td>
                 <td>{lastName}</td>
                 <td>{socialLink}</td>
+                <td>{followerStart}</td>
+                <td>{followerCurrent}</td>
                 <td>
-                    <button onClick={handleEditBtn}>Edit</button>
+                    <button className={styles.toggleBtn + " " + styles.btn} onClick={handleEditBtn}>Edit</button>
                 </td>
                 <td>
-                    <button onClick={handleDeleteBtn}>Delete</button>
+                    <button className={styles.deleteBtn + " " + styles.btn} onClick={handleDeleteBtn}>Delete</button>
                 </td>
             </>
             }

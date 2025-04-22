@@ -26,6 +26,8 @@ function MembersShowAll() {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Social Link</th>
+                        <th>Follower Start</th>
+                        <th>Follower Current</th>
                         <th>Edit Member</th>
                         <th>Delete Member</th>
                     </tr>
@@ -37,12 +39,14 @@ function MembersShowAll() {
                             firstName={member.firstName} 
                             lastName={member.lastName} 
                             socialLink={member.socialLink}
+                            followerStart={member.followerInit}
+                            followerCurrent={member.followerCurrent}
                         />
                     ))}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colSpan="4">Total members</th>
+                        <th colSpan="6">Total members</th>
                         <td>{user.members.length}</td>
                     </tr>
                 </tfoot>

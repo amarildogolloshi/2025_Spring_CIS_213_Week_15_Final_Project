@@ -1,0 +1,9 @@
+.section {
+    width: inherit;
+}
+
+.section select {
+    width: fit-content;
+    font-size: 1.05em;
+    padding: .25em .5em;
+}
