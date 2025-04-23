@@ -90,6 +90,25 @@ export function userReducer(state, action) {
 
             return state;
         
+        case "UPDATE_EVENT_MEMBERS":
+            let backendValidation6 = true;
+            if (backendValidation6) {
+                return {
+                    ...state,    // Unpack all state info
+                    // Add new member to the target event
+                    events: state.events.map((event) => 
+                        event.id == action.payload.eventId ? 
+                        {
+                            ...event,
+                            eventMembers: action.payload.memberIds,
+                        }
+                        : event
+                    )
+                }
+            }
+
+            return state;
+
         case "DELETE_MEMBER":
             // Backend validation
             let backendValidation5 = true;
