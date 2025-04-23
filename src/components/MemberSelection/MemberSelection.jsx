@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../../store/UserContextProvider";
 import styles from "./MemberSelection.module.css";
 
@@ -7,11 +7,13 @@ const SUCCESS_STYLE = {"color": "var(--success-green)"};
 const PERSIST_FEEDBACK = "Remember to save your changes!";
 
 function MemberSelection() {
+    const {user, dispatch} = useContext(UserContext);
     const [selectedEvent, setSelectedEvent] = useState("");
+    const [visisbleMembers, setVisibleMembers] = useState(user.members);
     const [eventMembers, setEventMembers] = useState([]);
+    const [search, setSearch] = useState("");
     const [operationFeedback, setOperationFeedback] = useState(PERSIST_FEEDBACK);
     const [operationStyle, setOperationStyle] = useState(true); // true means you added a member, false remove
-    const {user, dispatch} = useContext(UserContext);
 
     /** Handles event selection for viewing members associated with an event.
     * @param {string} id - Expects an Event Id from the selection list.
@@ -20,11 +22,13 @@ function MemberSelection() {
     function handleSelect(e) {
         const eventId = e.target.value;
         setSelectedEvent(eventId);
-
-        console.log(user.events.filter((event) => event.id == eventId)[0].eventMembers);
         
         // Gather current member ids for the event
         setEventMembers(user.events.filter((event) => event.id == eventId)[0].eventMembers);
+    }
+
+    function handleSearch(e) {
+        setSearch(e.target.value);
     }
 
     // Handles updating event members, based on the checkbox state
@@ -46,7 +50,14 @@ function MemberSelection() {
         );
     }
 
-    // console.log(user.members);
+    useEffect(() => {
+        // Update visable members based on case-insensitive search.
+        // Note: Spaces are removed from search; first and last name is joined
+        setVisibleMembers(user.members.filter((member) => 
+                `${member.firstName.toLowerCase()}${member.lastName.toLowerCase()}`
+                .includes(search.toLowerCase().replaceAll(" ", "")) 
+        ))
+    }, [search]);
 
     return (
         <section className={styles.section}>
@@ -60,8 +71,9 @@ function MemberSelection() {
                     </option>
                 ))}
             </select>
+            <input type="search" value={search} onChange={handleSearch} />
             <div>
-                {selectedEvent && user.members.map((member) => (
+                {selectedEvent && visisbleMembers.map((member) => (
                     <p key={member.id}>
                         <input
                             type="checkbox"
@@ -69,7 +81,7 @@ function MemberSelection() {
                             checked={eventMembers.includes(member.id)}
                             onChange={handleCheckboxChange}
                         />
-                        <label>{member.firstName}</label>
+                        <label>{member.firstName}&nbsp;{member.lastName}</label>
                     </p>
 
                     
