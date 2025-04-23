@@ -141,14 +141,14 @@ const DATA = [
             {
                 id: uuidv4(),
                 name: "Event 1",
-                eventMembers: [12345, 12346],
+                eventMembers: ["12345abc", "12346efg"],
                 startTime: "2025-04-15T10:04",
                 endTime: "2025-04-16T10:04"
             },
         ],
         members: [
             {
-                id: 12345,
+                id: "12345abc",
                 firstName: "Sally",
                 lastName: "Twoshoes",
                 socialLink: "https://google.com",
@@ -156,7 +156,7 @@ const DATA = [
                 followerCurrent: 1100,
             },
             {
-                id: 12346,
+                id: "12346efg",
                 firstName: "Bart",
                 lastName: "Simpson",
                 socialLink: "https://google.com",

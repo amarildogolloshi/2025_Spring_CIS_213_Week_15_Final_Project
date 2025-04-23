@@ -20,6 +20,8 @@ function MemberSelection() {
     function handleSelect(e) {
         const eventId = e.target.value;
         setSelectedEvent(eventId);
+
+        console.log(user.events.filter((event) => event.id == eventId)[0].eventMembers);
         
         // Gather current member ids for the event
         setEventMembers(user.events.filter((event) => event.id == eventId)[0].eventMembers);
@@ -30,9 +32,6 @@ function MemberSelection() {
         // Store target values
         let [id, firstName, lastName] = (e.target.value.split(" "));
         let checked = e.target.checked;
-
-        // id is stored as an int -> parse accordingly
-        id = parseInt(id);
 
         // Update current members based on checked
         setEventMembers(prevMembers => 
@@ -46,6 +45,8 @@ function MemberSelection() {
             : `Member: ${firstName} ${lastName} removed. ` + PERSIST_FEEDBACK
         );
     }
+
+    // console.log(user.members);
 
     return (
         <section className={styles.section}>
