@@ -83,7 +83,7 @@ function EventCreate() {
                 type: "ADD_EVENT",
                 payload: {
                     name: nameController.value,
-                    eventMembers: [12345, 12346],
+                    eventMembers: [],
                     startTime: startController.value,
                     endTime: endController.value,
                 }

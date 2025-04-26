@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router-dom";
 import PrivateLayout from "../../components/private/PrivateLayout";
+import EventCards from "./EventCards/EventCards";
 
 function Dashboard() {
     
@@ -25,6 +26,11 @@ function Dashboard() {
         <PrivateLayout>
             
             <p> Welcome to the Dashboard: {user?.username || "Guest"} </p>
+            {
+                user.events.map((event) => (
+                    <EventCards key={event.id} eventID={event.id} memberIDS={event.eventMembers} />
+                ))
+            }
             
         </PrivateLayout>
         
