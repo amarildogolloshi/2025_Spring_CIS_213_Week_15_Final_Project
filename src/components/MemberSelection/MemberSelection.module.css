@@ -7,3 +7,41 @@
     font-size: 1.05em;
     padding: .25em .5em;
 }
+
+.inputs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.inputContainer label {
+    margin-right: 1rem;
+    font-weight: bold;
+    color: var(--nav-text-color);
+}
+
+.inputContainer input[type="search"] {
+    padding: .25em .5em;
+}
+
+.memberDisplay {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.memberDisplay p {
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.memberDisplay span {
+    font-size: 1.05rem;
+}
+
+.memberDisplay label {
+    margin-left: 1rem;
+}
+
+.memberDisplay label span {
+    margin-left: 1rem;
+}

@@ -101,39 +101,51 @@ function MemberSelection() {
     return (
         <section className={styles.section}>
             <span style={operationStyle ? SUCCESS_STYLE : ERROR_STYLE}>{operationFeedback}</span>
-            <label>Select an Event</label>
-            <select value={selectedEvent} onChange={handleEventSelect}>
-                <option value="" disabled>Event</option>
-                {user.events.map((event) => (
-                    <option key={event.id} value={event.id}>
-                        {event.name}
-                    </option>
-                ))}
-            </select>
-            <label>Sort By</label>
-            <select value={selectedSort} onChange={handleSortSelect}>
-                <option value="" disabled>Sort</option>
-                <option value="first">First Name</option>
-                <option value="last">Last Name</option>
-                <option value="follower">Follower Count</option>
-            </select>
-            <input type="search" value={search} onChange={handleSearch} />
-            <div>
-                {selectedEvent && visisbleMembers.map((member) => (
-                    <p key={member.id}>
-                        <input
-                            type="checkbox"
-                            value={`${member.id} ${member.firstName} ${member.lastName}`}
-                            checked={eventMembers.includes(member.id)}
-                            onChange={handleCheckboxChange}
-                        />
-                        <label>{member.firstName}&nbsp;{member.lastName}</label>
-                    </p>
-
-                    
-                ))
-                }
+            <div className={styles.inputs}>
+                <div className={styles.inputContainer}>
+                    <label>Select an Event</label>
+                    <select value={selectedEvent} onChange={handleEventSelect}>
+                        <option value="" disabled>Event</option>
+                        {user.events.map((event) => (
+                            <option key={event.id} value={event.id}>
+                                {event.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className={styles.inputContainer}>
+                    <label>Sort By</label>
+                    <select value={selectedSort} onChange={handleSortSelect}>
+                        <option value="" disabled>Sort</option>
+                        <option value="first">First Name</option>
+                        <option value="last">Last Name</option>
+                        <option value="follower">Follower Count</option>
+                    </select>
+                </div>
+                <div className={styles.inputContainer}>
+                    <label>Search: </label>
+                    <input type="search" value={search} onChange={handleSearch} />
+                </div>
             </div>
+            <div className={styles.memberDisplay}>
+                    {selectedEvent && visisbleMembers.map((member) => (
+                        <p key={member.id}>
+                            <input
+                                type="checkbox"
+                                value={`${member.id} ${member.firstName} ${member.lastName}`}
+                                checked={eventMembers.includes(member.id)}
+                                onChange={handleCheckboxChange}
+                            />
+                            <label>
+                                <span>{member.firstName}</span>
+                                <span>{member.lastName}</span>
+                                <span>{member.socialLink}</span>
+                                <span>{member.followerCurrent} followers</span>
+                            </label>
+                        </p>
+                    ))
+                    }
+                </div>
         </section>
     );
 }
