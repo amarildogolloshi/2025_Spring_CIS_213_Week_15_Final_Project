@@ -5,7 +5,7 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { UserContextProvider } from './store/UserContextProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
-    <HashRouter>
+    <HashRouter basename="/">
         <UserContextProvider>
             <App />
         </UserContextProvider>
