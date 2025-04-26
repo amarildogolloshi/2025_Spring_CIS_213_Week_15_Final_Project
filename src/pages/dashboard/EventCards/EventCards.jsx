@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import UserContext from "../../../store/UserContextProvider";
 import MemberCard from "./MemberCard";
 import styles from './EventCards.module.css';

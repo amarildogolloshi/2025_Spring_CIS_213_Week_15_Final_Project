@@ -1,6 +1,20 @@
-.p {
-    background-color: var(--header-border-bottom);
+.container {
+    background-color: var(--textbox-light-blue);
     flex: 0 0 30%;
     margin: 1rem;
-    height: 200px;
+    height: 300px;
+    padding: 1rem;
+
+    box-shadow: 0px 0px 5px var(--header-border-bottom);
+    text-align-last: center;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.last {
+    flex-basis: 100%;
 }
