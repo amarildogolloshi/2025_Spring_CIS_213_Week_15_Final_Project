@@ -1,0 +1,6 @@
+.p {
+    background-color: var(--header-border-bottom);
+    flex: 0 0 30%;
+    margin: 1rem;
+    height: 200px;
+}

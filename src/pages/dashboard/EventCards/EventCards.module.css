@@ -1,0 +1,9 @@
+.cardContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.section {
+    margin-bottom: 1rem;
+}

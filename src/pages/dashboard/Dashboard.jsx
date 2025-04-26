@@ -28,7 +28,7 @@ function Dashboard() {
             <p> Welcome to the Dashboard: {user?.username || "Guest"} </p>
             {
                 user.events.map((event) => (
-                    <EventCards key={event.id} eventID={event.id} memberIDS={event.eventMembers} />
+                    <EventCards key={event.id} name={event.name} eventID={event.id} memberIDS={event.eventMembers} />
                 ))
             }
             
