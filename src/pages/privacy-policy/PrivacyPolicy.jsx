@@ -29,7 +29,7 @@ function PrivacyPolicy() {
                 <p>You can request **data access, modification, or deletion** at any time.</p>
 
                 <h2>6. Contact Us</h2>
-                <p class="contact">For questions, reach us at 📧 [contact@pulse.com]</p>
+                <p className="contact">For questions, reach us at 📧 [contact@pulse.com]</p>
             </div>
         </PublicLayout>
     );

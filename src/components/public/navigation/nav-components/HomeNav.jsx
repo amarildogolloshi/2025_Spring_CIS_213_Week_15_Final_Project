@@ -27,12 +27,13 @@ function HomeNav() {
   // Handle navigation when on home page
   const handleClick = (e, sectionId) => {
     e.preventDefault();
+    
+    console.log(location.pathname)
+    console.log(sectionId)
     if (location.pathname === '/') {
       scrollToSection(sectionId);
     } else {
-      // If not on home page, navigate to home page first
-        window.location.href = `/#${sectionId}`;
-    //   window.location.href = `/`;
+      window.location.href = `/`;
     }
   };
 

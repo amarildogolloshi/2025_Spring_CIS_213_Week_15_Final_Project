@@ -10,16 +10,14 @@ function MainNavigation() {
     // Logic for rendering different navigations
     switch (location.pathname) {
         case "/":
-        case "/privacy-policy":
             navRender = <HomeNav />;
             break;
         case "/signin":
         case "/signup":
         case "/forgotpassword":
+        case "/privacy-policy":
+        case "/terms-and-conditions":
             navRender = <SignInNav />;
-            break;
-        case "/support":
-            navRender = <HomeNav />;  // Support is a separate page; no nav
             break;
         default:
             navRender = <HomeNav />;

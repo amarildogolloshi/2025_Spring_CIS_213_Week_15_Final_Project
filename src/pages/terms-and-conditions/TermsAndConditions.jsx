@@ -32,7 +32,7 @@ function TermsAndConditions() {
                     <p>Pulse reserves the right to update these terms. Continued use implies agreement with the latest version.</p>
 
                     <h2>7. Contact Information</h2>
-                    <p class="contact">For questions, reach us at 📧 [contact@pulse.com]</p>
+                    <p className="contact">For questions, reach us at 📧 [contact@pulse.com]</p>
                 </div>
         </PublicLayout>
     );
