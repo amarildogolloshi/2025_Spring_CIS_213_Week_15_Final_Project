@@ -5,7 +5,7 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { UserContextProvider } from './store/UserContextProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
-    <HashRouter basename="/2025_Spring_CIS_213_Week_15_Final_Project">
+    <HashRouter>
         <UserContextProvider>
             <App />
         </UserContextProvider>
