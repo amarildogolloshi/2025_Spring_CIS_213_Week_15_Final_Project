@@ -22,11 +22,13 @@ function MembersShowAll() {
 
     return (
         <PrivateLayout>
+            <h3>View All Members</h3>
             <table className={tableStyles.table}>
                 <thead>
                     <tr>
-                        <th>Full Name</th>
-                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Social Link</th>
                         <th>Follower Start</th>
                         <th>Follower Current</th>
                         <th>Edit Member</th>
@@ -37,10 +39,11 @@ function MembersShowAll() {
                     {user.members.map((member) => (
                         <TableRow key={member.id}
                             id={member.id}
-                            fullName={member.name} 
-                            userName={member.username} 
-                            followerStart={member.followers_init}
-                            followerCurrent={member.followers_current}
+                            firstName={member.firstName} 
+                            lastName={member.lastName} 
+                            socialLink={member.socialLink}
+                            followerStart={member.followerInit}
+                            followerCurrent={member.followerCurrent}
                         />
                     ))}
                 </tbody>

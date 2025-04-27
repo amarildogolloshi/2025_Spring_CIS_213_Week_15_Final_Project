@@ -40,7 +40,7 @@ function EventsShowAll() {
                                 <th>{event.name}</th>
                                 <td>{event.startTime}</td>
                                 <td>{event.endTime}</td>
-                                <td>{event.eventMembers.length}</td>
+                                <td>{event.members.length}</td>
                             </tr>
                         ))}
                     </tbody>
