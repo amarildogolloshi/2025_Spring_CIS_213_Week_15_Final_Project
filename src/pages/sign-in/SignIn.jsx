@@ -50,19 +50,29 @@ function SignIn() {
     // Only redirect when "user" changes
     useEffect(() => {
         if (error) {
+            console.log("Error:", error)
             setMessage("Error fetching data: " + error);
             setMessageType("error");
         }
 
         if (data && !error && data.access_token) {
+            console.log("Login user:", user)
+            console.log("Login data:", data)
+            console.log("Login data:", data.user)
             login(user, data.access_token );
+            // dispatch({
+            //     type: "SET_SIGN_IN",
+            //     payload: {
+            //         "username": userInput,
+            //         "token": data.access_token,
+            //         "user": data,
+            //         isLoggedIn: true,
+            //     }
+            // });
+
             dispatch({
                 type: "SET_SIGN_IN",
-                payload: {
-                    "username": userInput,
-                    "token": data.access_token,
-                    isLoggedIn: true,
-                }
+                payload: data,
             });
 
         }
