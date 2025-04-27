@@ -13,7 +13,8 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 60rem; /* Same as container width */
+      width: inherit; /* Same as container width */
+      max-width: 100%;
       background-color: white;
       z-index: 1000;
       /* padding: 1rem 0; */
@@ -22,3 +23,11 @@
     align-items: center;
       border-bottom: 1px solid #ccc;
   }
+
+@media screen and (max-width: 1000px) {
+    .header-fixed-top {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      height: fit-content;
+    }
+}

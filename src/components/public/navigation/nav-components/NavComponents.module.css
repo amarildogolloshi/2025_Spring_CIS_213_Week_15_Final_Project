@@ -44,3 +44,20 @@
     box-shadow: 0 0 2px var(--pulse-blue);
     border: none;
 }
+
+@media screen and (max-width: 768px) {
+    .ul {
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 1em;
+    }
+
+    .ul li {
+        list-style-type: none;
+        margin: auto;
+    }
+    
+    .ul li:last-of-type {
+        margin: auto;
+    }
+}
