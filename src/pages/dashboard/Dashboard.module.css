@@ -1,0 +1,17 @@
+.dashboardSection{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 20px; */
+}
+
+.cardLink{
+    flex: 1 1 400px;
+    max-width: 30%;
+    text-decoration: none;
+}

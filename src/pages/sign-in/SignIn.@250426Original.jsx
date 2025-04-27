@@ -5,15 +5,10 @@ import { useNavigate } from "react-router-dom";
 import styles from "../UserLoginControl.module.css";
 import { NavLink } from "react-router-dom";
 import PublicLayout from "../../components/public/PublicLayout";
-import useApi from "../../hooks/useAPI";
-import DynamicMessage from "../../components/DynamicMessage/DynamicMessage";
 
 function SignIn() {
     const {user, dispatch, login} = useContext(UserContext);
     const navigate = useNavigate();     // For redirecting to Dashboard upon successful login
-    
-    const [message, setMessage] = useState(null);
-    const [messageType, setMessageType] = useState("success");
 
     const [userInput, setUserInput] = useState("user");
     const [passInput, setPassInput] = useState("pass1234");
@@ -22,24 +17,21 @@ function SignIn() {
     const handleUserInput = (e) => setUserInput(e.target.value);
     const handlePassInput = (e) => setPassInput(e.target.value);
 
-    // Hook for the API call (Initialize with no payload)
-    const { data, loading, error, refetch } = useApi("/api/auth/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            username: userInput,
-            password: passInput,
-        }),
-    });
-
     // Handle submit: Updates 'user' (ON THE NEXT RENDER) upon successful login
     function handleSubmit(e) {
         e.preventDefault();
 
         try{
-            refetch();
+            dispatch({
+                type: "SIGN_IN",
+                payload: {
+                    "username": userInput,
+                    "password": passInput,
+                }
+            });
+            const mockToken = "mock_jwt_token_123";
+            login(user, mockToken )
+            console.log("Login user:", user)
         } catch(error) {
             console.error("Login failed:", error);
         }
@@ -49,31 +41,14 @@ function SignIn() {
    
     // Only redirect when "user" changes
     useEffect(() => {
-        if (error) {
-            setMessage("Error fetching data: " + error);
-            setMessageType("error");
-        }
-
-        if (data && !error && data.access_token) {
-            login(user, data.access_token );
-            dispatch({
-                type: "SET_SIGN_IN",
-                payload: {
-                    "username": userInput,
-                    "token": data.access_token,
-                    isLoggedIn: true,
-                }
-            });
-
-        }
+        console.log("Login user:", user)
         if (user?.isLoggedIn) {
             navigate("/pulse/dashboard");
         } 
-    }, [data, error, user?.isLoggedIn]);
+    }, [user?.isLoggedIn]);
 
     return (
         <PublicLayout>
-             {message && <DynamicMessage type={messageType} message={message} />}
             <section className={styles.section}>
                 <form onSubmit={handleSubmit}>
                     <h2>Welcome to <span>Pulse</span></h2>

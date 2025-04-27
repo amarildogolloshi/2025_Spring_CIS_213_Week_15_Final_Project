@@ -32,6 +32,13 @@ export function userReducer(state, action) {
                 // Unsuccessful sign in
                 return state;
             }
+        case "SET_SIGN_IN":
+            console.log("SET_SIGN_IN")
+            
+            return {
+                ...state,   // Unpack all state info
+                ...action.payload,
+            };
         
         case "SIGN_UP":
             // Possibly perform validation

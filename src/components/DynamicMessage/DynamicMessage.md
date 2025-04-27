@@ -1,0 +1,1 @@
+<DynamicMessage type={messageType} message={message} />}

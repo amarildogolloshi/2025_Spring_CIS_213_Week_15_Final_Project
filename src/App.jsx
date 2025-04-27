@@ -35,6 +35,10 @@ function App() {
   // console.log('user id', user.user.id)
   //console.log("user.user.isLoggedIn", user.isLoggedIn)
 
+  // console.log(process.env);
+  console.log(process.env.NODE_ENV);
+  console.log(import.meta.env.VITE_API_URL);
+
   useEffect(() => {
     console.log("Login user:", user)
     if (user.isLoggedIn) {
