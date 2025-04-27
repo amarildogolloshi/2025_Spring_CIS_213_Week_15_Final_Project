@@ -38,6 +38,7 @@ export function userReducer(state, action) {
             return {
                 ...state,   // Unpack all state info
                 ...action.payload,
+                isLoggedIn: true,
             };
         
         case "SIGN_UP":

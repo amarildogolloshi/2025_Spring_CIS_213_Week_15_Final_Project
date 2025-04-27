@@ -11,7 +11,7 @@ function EventsShowAll() {
     // const userData = JSON.parse(localStorage.getItem("user"));    
     const navigate = useNavigate();
 
-    console.log("EventsShowAll user: " + JSON.stringify(user))
+    // console.log("EventsShowAll user: " + JSON.stringify(user))
 
 
     //Only redirect when "user" changes
@@ -38,8 +38,8 @@ function EventsShowAll() {
                         {user.events.map((event) => (
                             <tr key={event.id}>
                                 <th>{event.name}</th>
-                                <td>{event.startTime}</td>
-                                <td>{event.endTime}</td>
+                                <td>{event.date_start}</td>
+                                <td>{event.date_end}</td>
                                 <td>{event.members.length}</td>
                             </tr>
                         ))}

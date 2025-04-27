@@ -48,10 +48,12 @@ function Dashboard() {
         }
     }, [data, user?.isLoggedIn]);
 
+    console.log("user: ", user);
+
     return (
         <PrivateLayout>
             {message && <DynamicMessage type={messageType} message={message} />}
-            
+
             
             {loading && <p>Loading...</p>}
             
