@@ -65,6 +65,8 @@ function MemberSelection() {
                         return 0;
                     }
                 }))
+
+                break;
             case "nonmember":
                 setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) => {
                     if (eventMembers.includes(a.id) && !eventMembers.includes(b.id)) {
@@ -76,6 +78,8 @@ function MemberSelection() {
                         return 0;
                     }
                 }))
+
+                break;
             default:
                 break;
         }
