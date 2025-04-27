@@ -4,11 +4,12 @@ import useInput from "../../../hooks/useInput";
 import styles from "./TableRow.module.css";
 
 // Component for updating Member information inside the View All Members table.
-function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
+function TableRow({ id, firstName, lastName, socialLink, followerStart, followerCurrent }) {
     const {user, dispatch} = useContext(UserContext);
     const [editView, setEditView] = useState(false);
-    const [fullNameController, fNameErrorController] = useInput(fullName);
-    const [userNameController, lNameErrorController] = useInput(userName);
+    const [fNameController, fNameErrorController] = useInput(firstName);
+    const [lNameController, lNameErrorController] = useInput(lastName);
+    const [mediaController, mediaErrorController] = useInput(socialLink);
 
     // Handles updating of an individual member
     function handleUpdate() {
@@ -57,13 +58,18 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
             {editView ?
             <>
                 <td>
-                    <input type="text" value={fullNameController.value}
-                        onChange={(e) => fullNameController.handleUpdateValue(e.target.value)}
+                    <input type="text" value={fNameController.value}
+                        onChange={(e) => fNameController.handleUpdateValue(e.target.value)}
                     />
                 </td>
                 <td>
-                    <input type="text" value={userNameController.value}
-                        onChange={(e) => userNameController.handleUpdateValue(e.target.value)}
+                    <input type="text" value={lNameController.value}
+                        onChange={(e) => lNameController.handleUpdateValue(e.target.value)}
+                    />
+                </td>
+                <td>
+                    <input type="text" value={mediaController.value}
+                        onChange={(e) => mediaController.handleUpdateValue(e.target.value)}
                     />
                 </td>
                 <td>{followerStart}</td>
@@ -78,8 +84,9 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
             </>
             :   
             <>
-                <td>{fullName}</td>
-                <td>{userName}</td>
+                <td>{firstName}</td>
+                <td>{lastName}</td>
+                <td>{socialLink}</td>
                 <td>{followerStart}</td>
                 <td>{followerCurrent}</td>
                 <td>

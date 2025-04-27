@@ -45,3 +45,23 @@
 .memberDisplay label span {
     margin-left: 1rem;
 }
+
+.submitBtn {
+    width: 10em;
+    background-color: var(--light-border-blue);
+    padding: .5em 1em;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 1px solid var(--header-border-bottom);
+    font-size: 1.15em;
+    color: var(--default-white);
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.submitBtn:hover {
+    background-color: var(--default-white);
+    color: var(--light-border-blue);
+    box-shadow: 0 0 2px var(--light-border-blue);
+}
