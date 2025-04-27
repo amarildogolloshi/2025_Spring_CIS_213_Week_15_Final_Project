@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router-dom";
 import PrivateLayout from "../../components/private/PrivateLayout";
-import EventCards from "./EventCards/EventCards";
 import useApi from "../../hooks/useAPI";
 import DynamicMessage from "../../components/DynamicMessage/DynamicMessage";
 import DashboardCard from "../../components/DashboardCard/DashboardCard";

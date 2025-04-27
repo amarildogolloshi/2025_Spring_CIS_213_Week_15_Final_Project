@@ -11,6 +11,9 @@ function EventsShowAll() {
     // const userData = JSON.parse(localStorage.getItem("user"));    
     const navigate = useNavigate();
 
+    console.log("EventsShowAll user: " + JSON.stringify(user))
+
+
     //Only redirect when "user" changes
     useEffect(() => {
         if (!user?.isLoggedIn) {
