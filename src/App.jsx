@@ -20,6 +20,7 @@ import EventCreate from "./pages/events/create/EventCreate.jsx";
 import EventsShowAll from "./pages/events/show-all/EventsShowAll.jsx";
 import MemberCreate from "./pages/members/create/MemberCreate.jsx";
 import MembersShowAll from "./pages/members/show-all/MembersShowAll.jsx";
+import MembersCards from "./pages/members/cards/MembersCards.jsx";
 import PrivacyPolicy from "./pages/privacy-policy/PrivacyPolicy.jsx";
 import TermsAndConditions from "./pages/terms-and-conditions/TermsAndConditions.jsx";
 
@@ -74,6 +75,7 @@ function App() {
           <Route path='/pulse/events' element={<ProtectedRoute element={<EventsShowAll />} />}/>
           <Route path='/pulse/members/create' element={<ProtectedRoute element={<MemberCreate />} />}/>
           <Route path='/pulse/members' element={<ProtectedRoute element={<MembersShowAll />} />}/>
+          <Route path='/pulse/members/cards' element={<ProtectedRoute element={<MembersCards />} />}/>
           <Route path='/pulse/support/report' element={<Report />} />
           <Route path='/pulse/support/feature' element={<Feature />} />
           <Route path='/pulse/about' element={<ProtectedRoute element={<About />} />} />

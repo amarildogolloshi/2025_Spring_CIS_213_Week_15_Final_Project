@@ -18,6 +18,7 @@ const dropdownItems = [
     links: [
       { name: "Create New", path: "/pulse/members/create" },
       { name: "Show All", path: "/pulse/members" },
+      { name: "Cards", path: "/pulse/members/cards" },
     ],
   },
   {
