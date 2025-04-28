@@ -24,9 +24,12 @@ function MemberSelection() {
         setSelectedEvent(eventId);
         
         // Gather current member ids for the event
-        setEventMembers(user.events.filter((event) => event.id == eventId)[0].eventMembers);
+        setEventMembers(user.events.filter((event) => event.id == eventId)[0].members.map((member) => member.id));
     }
 
+    function handleSubmitBtn() {
+        console.log("Submit");
+    }
 
     function handleSortSelect(e) {
         setSelectedSort(e.target.value);
@@ -34,20 +37,48 @@ function MemberSelection() {
 
         switch (sortBy) {
             case "first":
-                setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) =>
-                    a.firstName.localeCompare(b.firstName)
+                setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) => {
+                    return a.name.trim().localeCompare(b.name.trim());
+                }
                 ))
                 break;
             case "last": 
-                setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) =>
-                    a.lastName.localeCompare(b.lastName)
+                setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) => {
+                    return a.name.trim().split(" ").at(-1).localeCompare(b.name.trim().split(" ").at(-1))
+                }
                 ))
                 break;
 
             case "follower":
                 setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) =>
-                    b.followerCurrent - a.followerCurrent
+                    b.followers_current - a.followers_current
                 ))
+                break;
+            case "member":
+                setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) => {
+                    if (eventMembers.includes(a.id) && !eventMembers.includes(b.id)) {
+                        // If 'a' is member but 'b' is not, 'a' goes first
+                        return -1;
+                    } else if (!eventMembers.includes(a.id) && eventMembers.includes(b.id)) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }))
+
+                break;
+            case "nonmember":
+                setVisibleMembers(prevMembers => prevMembers.toSorted((a, b) => {
+                    if (eventMembers.includes(a.id) && !eventMembers.includes(b.id)) {
+                        // If 'a' is member but 'b' is not, 'b' goes first
+                        return 1;
+                    } else if (!eventMembers.includes(a.id) && eventMembers.includes(b.id)) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                }))
+
                 break;
             default:
                 break;
@@ -61,7 +92,7 @@ function MemberSelection() {
     // Handles updating event members, based on the checkbox state
     function handleCheckboxChange(e) {
         // Store target values
-        let [id, firstName, lastName] = (e.target.value.split(" "));
+        let [id, name] = (e.target.value.split(" "));
         let checked = e.target.checked;
 
         // Update current members based on checked
@@ -72,7 +103,7 @@ function MemberSelection() {
         //  Variable to deal with state not updating immediately
         const memberIds = checked ? [...eventMembers, id] : eventMembers.filter((memberId) => memberId != id)
 
-        // Dispatch changes - update members for an event
+        // Dispatch changes - update members for an event TODO
         dispatch({
             type: "UPDATE_EVENT_MEMBERS",
             payload: {
@@ -84,8 +115,8 @@ function MemberSelection() {
         // Provide feedback accordingly
         setOperationStyle(checked);
         setOperationFeedback( checked ? 
-            `Member: ${firstName} ${lastName} added. `
-            : `Member: ${firstName} ${lastName} removed. `
+            `Member: ${name} added. `
+            : `Member: ${name} removed. `
         );
     }
 
@@ -93,7 +124,7 @@ function MemberSelection() {
         // Update visable members based on case-insensitive search.
         // Note: Spaces are removed from search; first and last name is joined
         setVisibleMembers(user.members.filter((member) => 
-                `${member.firstName.toLowerCase()}${member.lastName.toLowerCase()}`
+                member.name.toLowerCase()
                 .includes(search.toLowerCase().replaceAll(" ", ""))
         ))
     }, [search]);
@@ -120,32 +151,38 @@ function MemberSelection() {
                         <option value="first">First Name</option>
                         <option value="last">Last Name</option>
                         <option value="follower">Follower Count</option>
+                        <option value="member">Event Member</option>
+                        <option value="nonmember">Non Event Member</option>
                     </select>
                 </div>
                 <div className={styles.inputContainer}>
                     <label>Search: </label>
                     <input type="search" value={search} onChange={handleSearch} />
                 </div>
+                <button 
+                    className={styles.submitBtn}
+                    onClick={handleSubmitBtn}
+                >
+                    Submit Changes
+                </button>
             </div>
             <div className={styles.memberDisplay}>
                     {selectedEvent && visisbleMembers.map((member) => (
                         <p key={member.id}>
                             <input
                                 type="checkbox"
-                                value={`${member.id} ${member.firstName} ${member.lastName}`}
+                                value={`${member.id} ${member.name}`}
                                 checked={eventMembers.includes(member.id)}
                                 onChange={handleCheckboxChange}
                             />
                             <label>
-                                <span>{member.firstName}</span>
-                                <span>{member.lastName}</span>
-                                <span>{member.socialLink}</span>
-                                <span>{member.followerCurrent} followers</span>
+                                <span>{member.name}</span>
+                                <span>{member.followers_current}</span>
                             </label>
                         </p>
                     ))
                     }
-                </div>
+            </div>
         </section>
     );
 }

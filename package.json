@@ -6,6 +6,7 @@
   "homepage": "https://github.com/amarildogolloshi/2025_Spring_CIS_213_Week_15_Final_Project",
   "scripts": {
     "dev": "vite",
+    "hostlocal": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
