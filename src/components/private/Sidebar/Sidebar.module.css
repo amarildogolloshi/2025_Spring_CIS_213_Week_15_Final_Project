@@ -1,9 +1,10 @@
 .sidebar {
-    width: 250px; /* Fixed width */
+    width: var(--app-sidebar-width);
     background-color: var(--pulse-blue);
     color: white;
     padding: 20px;
     flex-shrink: 0; /* Ensures sidebar doesn’t shrink */
     min-height: 100vh; /* Ensures sidebar takes full height of the viewport */
     height: 100%;
+    position: fixed;
   }

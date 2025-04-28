@@ -6,6 +6,10 @@
     align-items: center;
     border-bottom: 1px solid #ccc;
     flex-direction: row-reverse;
+    position: fixed;
+    background-color: white;
+    width: calc(100% - var(--app-sidebar-width));
+    z-index: 1;
   }
   
 .header-fixed-top {

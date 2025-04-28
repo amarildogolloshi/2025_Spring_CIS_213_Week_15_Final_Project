@@ -6,6 +6,8 @@
     background-color: #f4f4f4;
     padding: 20px;
     overflow-y: auto; /* Scrollable content */
+    margin-top: var(--app-header-height);
+    min-height: calc(100vh - var(--app-header-height)); /* Full height minus header */
 
 }
 
