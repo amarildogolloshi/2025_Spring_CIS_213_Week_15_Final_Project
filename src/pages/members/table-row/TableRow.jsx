@@ -7,7 +7,7 @@ import DynamicMessage from "../../../components/DynamicMessage/DynamicMessage";
 import { FaChartBar } from "react-icons/fa";
 
 // Component for updating Member information inside the View All Members table.
-function TableRow({ id, fullName, userName, followerStart, followerCurrent, setOpenPanel, chartData }) {
+function TableRow({ id, photo, fullName, userName, followerStart, followerCurrent, setOpenPanel, chartData }) {
     const {user, dispatch} = useContext(UserContext);
     const [editView, setEditView] = useState(false);
     const [fullNameController, fNameErrorController] = useInput(fullName);
@@ -17,6 +17,8 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent, setO
 
     const [message, setMessage] = useState(null);
     const [messageType, setMessageType] = useState("success");
+
+    const baseUrl = import.meta.env.VITE_API_URL;
 
     // console.log(id+ " - " + fullName + " - " + userName + " - " + followerStart + " - " + followerCurrent)
 
@@ -121,6 +123,9 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent, setO
             {editView ?
             <>
                 <td>
+                <img  src={baseUrl + "/static/image/" + photo} alt="Profile" className={styles.profileImg} />
+                </td>
+                <td>
                     <input type="text" value={fullNameController.value}
                         onChange={(e) => fullNameController.handleUpdateValue(e.target.value)}
                     />
@@ -145,6 +150,9 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent, setO
             </>
             :   
             <>
+                <td>
+                    <img  src={baseUrl + "/static/image/" + photo} alt="Profile" className={styles.profileImg} />
+                </td>
                 <td>{fullName}</td>
                 <td>{userName}</td>
                 <td>{followerStart}</td>

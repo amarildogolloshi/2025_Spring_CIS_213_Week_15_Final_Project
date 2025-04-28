@@ -69,6 +69,7 @@ function MembersShowAll() {
             <table className={tableStyles.table}>
                 <thead>
                     <tr>
+                        <th>Photo</th>
                         <th>Full Name</th>
                         <th>Username</th>
                         <th>Follower Start</th>
@@ -83,6 +84,7 @@ function MembersShowAll() {
                         filteredMembers.map((member) => (
                             <TableRow key={member.id}
                                 id={member.id}
+                                photo={member.photo}
                                 fullName={member.name} 
                                 userName={member.username} 
                                 followerStart={member.followers_init}
@@ -102,7 +104,7 @@ function MembersShowAll() {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colSpan="6">Total members</th>
+                        <th colSpan="7">Total members</th>
                         <td>{user.members.length}</td>
                     </tr>
                 </tfoot>

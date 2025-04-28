@@ -58,3 +58,11 @@
     color: var(--light-border-blue);
     border: 1px solid var(--light-border-blue);
 }
+
+.profileImg{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: .5em;
+}
