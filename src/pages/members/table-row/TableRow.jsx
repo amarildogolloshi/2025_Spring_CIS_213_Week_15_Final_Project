@@ -4,9 +4,10 @@ import useInput from "../../../hooks/useInput";
 import styles from "./TableRow.module.css";
 import useApi from "../../../hooks/useAPI";
 import DynamicMessage from "../../../components/DynamicMessage/DynamicMessage";
+import { FaChartBar } from "react-icons/fa";
 
 // Component for updating Member information inside the View All Members table.
-function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
+function TableRow({ id, fullName, userName, followerStart, followerCurrent, setOpenPanel, chartData }) {
     const {user, dispatch} = useContext(UserContext);
     const [editView, setEditView] = useState(false);
     const [fullNameController, fNameErrorController] = useInput(fullName);
@@ -40,6 +41,12 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
         },
     }, false);
 
+    function handleViewChartBtn() {
+        // TODO - implement chart view
+        console.log("View chart for: " + fullNameController.value);
+        console.log("Chart data: " + chartData);
+        setOpenPanel({isOpen: true, chartData: chartData, name: fullNameController.value});
+    }
 
     // Handles updating of an individual member
     function handleUpdate() {
@@ -125,6 +132,9 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
                 </td>
                 <td>{followerStart}</td>
                 <td>{followerCurrent}</td>
+                <td>
+                    <button className={styles.btnChart} disabled><FaChartBar /></button>
+                </td>
                 <td className={styles.tdMultiBtn}>
                     <button className={styles.updateBtn + " " + styles.btn} onClick={handleUpdate}>Update</button>
                     <button className={styles.toggleBtn + " " + styles.btn} onClick={handleEditBtn}>Cancel</button>
@@ -139,6 +149,9 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
                 <td>{userName}</td>
                 <td>{followerStart}</td>
                 <td>{followerCurrent}</td>
+                <td>
+                    <button className={styles.btnChart + " " + styles.btn} onClick={handleViewChartBtn}><FaChartBar /></button>
+                </td>
                 <td>
                     <button className={styles.toggleBtn + " " + styles.btn} onClick={handleEditBtn}>Edit</button>
                 </td>

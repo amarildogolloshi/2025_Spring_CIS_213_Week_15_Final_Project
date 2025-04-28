@@ -47,3 +47,14 @@
 .btn:hover {
     background-color: var(--default-white);
 }
+
+.btnChart {
+    background-color: var(--light-border-blue);
+    color: white;
+    /* color: var(--default-white); */
+}
+.btnChart:hover{
+    background-color: white;
+    color: var(--light-border-blue);
+    border: 1px solid var(--light-border-blue);
+}
