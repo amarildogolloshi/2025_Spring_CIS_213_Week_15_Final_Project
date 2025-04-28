@@ -29,7 +29,7 @@ function Dashboard() {
         headers: {
             "Content-Type": "application/json",
         }
-    });
+    },true);
 
 
     //Only redirect when "user" changes
@@ -63,9 +63,7 @@ function Dashboard() {
                     <div className={styles.cardsContainer}>
                         {data.data.map((item) => (
                                 <Link to={item.link} key={item.id} className={styles.cardLink} >  
-                                <DashboardCard title={item.name}
-                                    description={item.value}
-                                />
+                                    <DashboardCard title={item.name} description={item.value}/>
                                 </Link>
                             ))
                         } 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useApi = (endpoint, options = {}) => {
+const useApi = (endpoint, options = {}, startAutomatically=false) => {
     const baseUrl = import.meta.env.VITE_API_URL;
     const url = `${baseUrl}${endpoint}`;
     
@@ -8,7 +8,8 @@ const useApi = (endpoint, options = {}) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
   
-    const fetchData = async () => {
+    const fetchData = async (startAutomatically) => {
+      // Reset state before fetching
       setLoading(true);
       try {
         let response;
@@ -21,7 +22,27 @@ const useApi = (endpoint, options = {}) => {
               'Content-Type': 'application/json',
               ...options.headers, // Allow custom headers
             },
+            body: options.body,
           });
+        } else if (options.method === "PUT") {
+          response = await fetch(url, {
+            ...options,
+            headers: {
+              'Content-Type': 'application/json',
+              ...options.headers, // Allow custom headers
+            },
+            body: options.body,
+          });
+        } else if (options.method === "DELETE") {
+          response = await fetch(url, {
+            ...options,
+            headers: {
+              'Content-Type': 'application/json',
+              ...options.headers, // Allow custom headers
+            },
+          });
+        } else {
+          throw new Error("Unsupported HTTP method");
         }
 
 
@@ -38,11 +59,12 @@ const useApi = (endpoint, options = {}) => {
     };
   
     useEffect(() => {
-      fetchData();
+      if(!startAutomatically) return;
+      fetchData(true);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url, JSON.stringify(options)]);
   
-    return { data, loading, error, refetch: fetchData };
+    return { data, loading, error, refetch: () => fetchData(true) };
   };
   
   export default useApi;

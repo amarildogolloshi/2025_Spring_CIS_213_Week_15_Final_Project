@@ -38,6 +38,7 @@ export function userReducer(state, action) {
             return {
                 ...state,   // Unpack all state info
                 ...action.payload,
+                isLoggedIn: true
             };
         
         case "SIGN_UP":
@@ -86,6 +87,7 @@ export function userReducer(state, action) {
             // Backend validation
             let backendValidation4 = true;
             if (backendValidation4) {
+
                 return {
                     ...state,   // Unpack all state info
                     // Find and update target member using payload id
@@ -95,7 +97,7 @@ export function userReducer(state, action) {
                 }
             }
 
-            return state;
+            return state;    
         
         case "UPDATE_EVENT_MEMBERS":
             let backendValidation6 = true;
@@ -120,6 +122,16 @@ export function userReducer(state, action) {
             // Backend validation
             let backendValidation5 = true;
             if (backendValidation5) {
+
+                userData = JSON.parse(localStorage.getItem("user"));
+                if (userData) {
+                    userData.members = userData.members.filter((member) => member.id !== action.payload.id);
+                    // Save it back to localStorage
+                    localStorage.setItem("user", JSON.stringify(userData));
+                } 
+                
+
+
                 return {
                     ...state,   // Unpack all state info
                     // Filter out target member

@@ -4,5 +4,6 @@
     color: white;
     padding: 20px;
     flex-shrink: 0; /* Ensures sidebar doesn’t shrink */
-    height: 100vh;
+    min-height: 100vh; /* Ensures sidebar takes full height of the viewport */
+    height: 100%;
   }

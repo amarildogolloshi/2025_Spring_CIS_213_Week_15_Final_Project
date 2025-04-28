@@ -10,7 +10,7 @@ function MembersShowAll() {
     // const userData = JSON.parse(localStorage.getItem("user"));    
     const navigate = useNavigate();
 
-    console.log("MembersShowAll user: " + JSON.stringify(user.members))
+    // console.log("MembersShowAll user: " + JSON.stringify(user.members))
     // console.log("MembersShowAll user: " + user?.isLoggedIn)
 
     //Only redirect when "user" changes
@@ -46,7 +46,7 @@ function MembersShowAll() {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colSpan="6">Total members</th>
+                        <th colSpan="5">Total members</th>
                         <td>{user.members.length}</td>
                     </tr>
                 </tfoot>

@@ -1,7 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../../../store/UserContextProvider";
 import useInput from "../../../hooks/useInput";
 import styles from "./TableRow.module.css";
+import useApi from "../../../hooks/useAPI";
+import DynamicMessage from "../../../components/DynamicMessage/DynamicMessage";
 
 // Component for updating Member information inside the View All Members table.
 function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
@@ -9,27 +11,62 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
     const [editView, setEditView] = useState(false);
     const [fullNameController, fNameErrorController] = useInput(fullName);
     const [userNameController, lNameErrorController] = useInput(userName);
+    const [followersStartController] = useState(followerStart);
+    const [followersCurrentController] = useState(followerCurrent);
+
+    const [message, setMessage] = useState(null);
+    const [messageType, setMessageType] = useState("success");
+
+    // console.log(id+ " - " + fullName + " - " + userName + " - " + followerStart + " - " + followerCurrent)
+
+    // Hook for the API call (Initialize with no payload)
+    const { data, loading, error, refetch } = useApi("/api/members/"+id, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: fullNameController.value,
+            username: userNameController.value,
+            followers_init: followersStartController,
+            followers_current: followersCurrentController,
+        }),
+    }, false);
+
+    const { data:dataDelete, loading:loadingDelete, error:errorDelete, refetch:refetchDelete } = useApi("/api/members/"+id, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }, false);
+
 
     // Handles updating of an individual member
     function handleUpdate() {
         // TODO - frontend validation
         let validationChecks = true;
         if (validationChecks) {
-            dispatch({
+             // Dispatch the update action
+             dispatch({
                 type: "UPDATE_MEMBER",
                 payload: {
                     id,
-                    firstName: fNameController.value,
-                    lastName: lNameController.value,
-                    socialLink: mediaController.value,
-                    followerInit: followerStart,
-                    followerCurrent,
+                    name: fullNameController.value,
+                    username: userNameController.value,
+                    followers_init: followersStartController,
+                    followers_current: followersCurrentController,
                 }
             })
+            
+            // Exit edit view
+            setEditView(prevEdit => !prevEdit);
+            
+            // Send PUT request to backend
+            refetch(true);
         }
 
-        // Exit edit view
-        setEditView(prevEdit => !prevEdit);
+        // // Exit edit view
+        // setEditView(prevEdit => !prevEdit);
     }
 
     // Toggles visibility state of "Edit View"
@@ -38,7 +75,7 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
     // Handles deletion of a member
     function handleDeleteBtn() {
         // Confirm deletion
-        if (confirm(`Are you sure you want to permantly delete member: ${fNameController.value}`)) {
+        if (confirm(`Are you sure you want to permanently delete member: ${fullNameController.value}`)) {
             // Action confirmed
             dispatch({
                 type: "DELETE_MEMBER",
@@ -46,11 +83,31 @@ function TableRow({ id, fullName, userName, followerStart, followerCurrent }) {
                     id: id
                 }
             })
+
+            refetchDelete(true);
         } else {
             // Action canceled
             return;
         }
     }
+
+    useEffect(() => {
+        console.log("TableRow:useEffect")  
+            if (error) {
+                console.log("Error:", error)
+                setMessage("Error fetching data: " + error);
+                setMessageType("error");
+            }
+    
+            if (data && !error) {
+                // console.log("Login user:", user)
+                // console.log("Login data:", data)
+                // console.log("Login data:", data.user)
+                // login(user, data.access_token );
+
+            }
+ 
+        }, [data, error, dispatch, id, fullNameController.value, userNameController.value, followersStartController, followersCurrentController]);
     
     return (
         <tr>
