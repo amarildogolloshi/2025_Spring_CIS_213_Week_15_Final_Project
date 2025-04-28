@@ -20,6 +20,9 @@ function MembersShowAll() {
     const {user, dispatch} = useContext(UserContext);
     const [openPanel, setOpenPanel] = useState({ isOpen: false, chartData: [], name: "" });
     // const userData = JSON.parse(localStorage.getItem("user"));    
+
+    const [searchQuery, setSearchQuery] = useState(""); 
+
     const navigate = useNavigate();
 
     // console.log("MembersShowAll user: " + JSON.stringify(user.members))
@@ -38,8 +41,31 @@ function MembersShowAll() {
         }
     }, [user?.isLoggedIn]);
 
+    // Filter members based on the search query
+    const filteredMembers = user.members.filter((member) =>
+        member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        member.username.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+
     return (
         <PrivateLayout>
+            <div>
+                {/* Search Input */}
+                <input
+                    type="text"
+                    placeholder="Search by name or username"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    style={{
+                        marginBottom: "20px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                        width: "100%"
+                    }}
+                />
+            </div>
             <table className={tableStyles.table}>
                 <thead>
                     <tr>
@@ -53,17 +79,26 @@ function MembersShowAll() {
                     </tr>
                 </thead>
                 <tbody>
-                    {user.members.map((member) => (
-                        <TableRow key={member.id}
-                            id={member.id}
-                            fullName={member.name} 
-                            userName={member.username} 
-                            followerStart={member.followers_init}
-                            followerCurrent={member.followers_current}
-                            chartData={member.chart}
-                            setOpenPanel={setOpenPanel}
-                        />
-                    ))}
+                    {filteredMembers.length > 0 ? (
+                        filteredMembers.map((member) => (
+                            <TableRow key={member.id}
+                                id={member.id}
+                                fullName={member.name} 
+                                userName={member.username} 
+                                followerStart={member.followers_init}
+                                followerCurrent={member.followers_current}
+                                chartData={member.chart}
+                                setOpenPanel={setOpenPanel}
+                            />
+                        ))
+                    ): (
+                        <tr>
+                            <td colSpan="6" style={{ textAlign: "center" }}>
+                                No members found
+                            </td>
+                        </tr>
+                    )
+                    }
                 </tbody>
                 <tfoot>
                     <tr>
