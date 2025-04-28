@@ -1,7 +1,8 @@
 .message {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    right: 120px;
+    /* width: 100%; */
     padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);

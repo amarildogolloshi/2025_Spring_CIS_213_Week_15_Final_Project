@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./DynamicMessage.module.css";
 
-function DynamicMessage({ type = "success", message, autoClose = true, duration = 3000 }) {
+function DynamicMessage({ type = "success", message, autoClose = true, duration = 5000 }) {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {

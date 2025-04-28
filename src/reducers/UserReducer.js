@@ -130,8 +130,6 @@ export function userReducer(state, action) {
                     localStorage.setItem("user", JSON.stringify(userData));
                 } 
                 
-
-
                 return {
                     ...state,   // Unpack all state info
                     // Filter out target member
@@ -147,6 +145,17 @@ export function userReducer(state, action) {
             // Backend validation
             let backendValidation2 = true;
             if (backendValidation2) {
+
+                userData = JSON.parse(localStorage.getItem("user"));
+                if (userData) {
+                    console.log(action.payload)
+                    userData.members = [...userData.members, action.payload];
+                    // Save it back to localStorage
+                    localStorage.setItem("user", JSON.stringify(userData));
+                } 
+
+
+
                 return {
                     ...state,   // Unpack all state info
                     members: [
