@@ -1,41 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../../store/UserContextProvider";
 import { useNavigate } from "react-router";
 import styles from "../UserLoginControl.module.css";
 import { NavLink } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import PublicLayout from "../../components/public/PublicLayout";
-import useApi from "../../hooks/useAPI";
-import DynamicMessage from "../../components/DynamicMessage/DynamicMessage";
 
 const ERROR_STYLE = {"color": "var(--error-red)"};
 
 function SignUp() {
     const {user, dispatch} = useContext(UserContext);
     const navigate = useNavigate();     // For redirecting to Dashboard upon successful login
-   
-    const [message, setMessage] = useState(null);
-    const [messageType, setMessageType] = useState("success");
-   
-    const [userController, userErrorController] = useInput("RegisterTest");
-    const [emailController, emailErrorController] = useInput("RegisterTest@pulse.com");
-    const [companyController, companyErrorController] = useInput("RegisterTest");
-    const [passController, passErrorController] = useInput("RegisterTest");
-    const [rePassController, rePassErrorController] = useInput("RegisterTest");
-
-    // Hook for the API call (Initialize with no payload)
-    const { data, loading, error, refetch } = useApi("/api/auth/register", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: userController.value,
-            username: emailController.value,
-            password: passController.value,
-            company: companyController.value,
-        }),
-    });
+    const [userController, userErrorController] = useInput("");
+    const [emailController, emailErrorController] = useInput("");
+    const [companyController, companyErrorController] = useInput("");
+    const [passController, passErrorController] = useInput("");
+    const [rePassController, rePassErrorController] = useInput("");
 
     // Handle submit: Updates 'user' (ON THE NEXT RENDER) upon successful login
     function handleSubmit(e) {
@@ -114,46 +94,33 @@ function SignUp() {
 
         // If not errors were found, process form
         if (rCode) {
-            refetch();  // Call the API to register the user
+            dispatch({
+                type: "SIGN_UP",
+                payload: {
+                    "username": userController.value,
+                    "email": emailController.value,
+                    "company": companyController.value,
+                    "password": passController.value,
+                }
+            });
         }
     }
 
     // Only redirect when "user" changes
     useEffect(() => {
-        if (error) {
-            // console.log("Error:", error)
-            setMessage("Error fetching data: " + error);
-            setMessageType("error");
-        }
-
-        if (data && !error) {
-            // console.log("Login user:", user)
-            console.log("Login data:", data)
-            if (data.success) {
-                setMessage("User registered successfully. We will redirect you to sign in page.");
-                setMessageType("success");  
-
-                setTimeout(() => {
-                    navigate("/signin");
-                },3000);
-
-            }
-        }
-
         if (user.isLoggedIn) {
             navigate("/dashboard");
         }
-    }, [data, error, user?.isLoggedIn]);
+    }, [user]);
 
     return (
         <PublicLayout>
-             {message && <DynamicMessage type={messageType} message={message} />}
             <section className={styles.section}>
                 <form onSubmit={handleSubmit}>
                     <h2>Sign Up</h2>
                     <div className={styles["form-body"]}>
                         <div className={styles["form-group"]}>
-                            <label style={userErrorController.error ? ERROR_STYLE : {}}>Name: </label>
+                            <label style={userErrorController.error ? ERROR_STYLE : {}}>Username: </label>
                             <span style={ERROR_STYLE}>{userErrorController.error && userErrorController.errorMessage}</span>
                             <input type="text" value={userController.value} onChange={(e) => userController.handleUpdateValue(e.target.value)}/>
                         </div>

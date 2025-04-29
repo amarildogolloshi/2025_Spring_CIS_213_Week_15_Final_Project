@@ -21,16 +21,11 @@ body{
     justify-content: center;
 }
 
-a,
-input,
-label {
-    font-size: 1em;
-    
-}
-
-h1,
-h2 {
+h1{
     font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;  
     /* font-family: "Inter"; */
 }
 
@@ -48,6 +43,10 @@ h2 {
     --app-desktop-width:60rem;
     --app-sidebar-width: 250px;
     --app-header-height: 105px;
+    --two-rem:2rem 0;
+    --margin-top-seven-rem: 7rem;
+    --app-public-header-padding-top-bottom: var(--two-rem);
+    --app-public-footer-padding-top-bottom: var(--two-rem);
 }
 
 

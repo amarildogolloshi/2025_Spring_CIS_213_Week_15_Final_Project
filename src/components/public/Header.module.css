@@ -1,6 +1,6 @@
 .header {
     flex: 0 1 auto;
-    padding: 3rem 0;
+    padding: var(--app-public-header-padding-top-bottom);
     display: flex !important;
     justify-content: space-between;
     align-items: center;
@@ -8,7 +8,7 @@
   }
   
 .header-fixed-top {
-    padding: 3rem 0;
+    padding: var(--app-public-header-padding-top-bottom);
     position: fixed;
       top: 0;
       left: 50%;
