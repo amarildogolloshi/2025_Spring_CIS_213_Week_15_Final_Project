@@ -36,6 +36,7 @@ function MemberCreate() {
             followers_init: initialFollowersController.value,
             followers_current: initialFollowersController.value,
             date_enter: dateOfEnterController.value,
+            created_by: user.user.id,
         }),
     }, false);
 

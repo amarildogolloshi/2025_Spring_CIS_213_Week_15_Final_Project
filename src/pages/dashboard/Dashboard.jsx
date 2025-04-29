@@ -24,7 +24,7 @@ function Dashboard() {
     // console.log("userData:" + userData?.isLoggedIn)
 
     // Hook for the API call (Initialize with no payload)
-    const { data, loading, error, refetch } = useApi("/api/dashboard", {
+    const { data, loading, error, refetch } = useApi("/api/dashboard?user_id="+user.user.id, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
