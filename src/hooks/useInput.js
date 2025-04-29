@@ -4,12 +4,20 @@ function useInput(initialValue) {
     const [value, setValue] = useState(initialValue);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [dateBackend, setDateBackend] = useState("");
 
     /** 
     * Updates the value state to a new value.
     * @param {string | string[]} newValue - The new value of the input
     */
-    function handleUpdateValue(newValue) {
+    function handleUpdateValue(newValue, date=false) {
+        // Handle date conversion for backend
+        if (date) {
+            let date_format = new Date(newValue).toISOString();
+            date_format = date_format.split("T")[0];
+            setDateBackend(date_format);
+        }
+        
         setValue(newValue);
     }
 
@@ -31,7 +39,7 @@ function useInput(initialValue) {
         setErrorMessage("*" + errMsg);
     }
 
-    return [{value, handleUpdateValue}, {error, handleUpdateError, errorMessage}]
+    return [{value, handleUpdateValue, dateBackend}, {error, handleUpdateError, errorMessage}]
 }
 
 export default useInput;

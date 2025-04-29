@@ -16,6 +16,18 @@ function MemberSelection() {
     const [operationFeedback, setOperationFeedback] = useState("");
     const [operationStyle, setOperationStyle] = useState(true); // true means you added a member, false remove
 
+    console.log(user.events);
+    console.log(user.events.filter((event) => event.id == selectedEvent)[0])
+    const { data, loading, error, refetch } = useApi(`/api/events/${selectedEvent}/members`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+            user.events.filter((event) => event.id == selectedEvent)[0]
+        )
+    });
+
     /** Handles event selection for viewing members associated with an event.
     * @param {string} id - Expects an Event Id from the selection list.
     * 
@@ -30,8 +42,8 @@ function MemberSelection() {
     }
 
     function handleSubmitBtn() {
-        console.log(eventMembers)
         // Ensure event is selected and eventMembers is not empty
+        console.log("Submitted");
         // if (selectedEvent != "" && eventMembers != []) {
         //     useApi(`/api/events/${selectedEvent}/members`, {
         //         method: "PUT",
@@ -46,6 +58,7 @@ function MemberSelection() {
         // } else {
         //     console.log("Selected event is empty OR eventMembers is empty.");
         // }
+        refetch(true);
     }
 
     function handleSortSelect(e) {

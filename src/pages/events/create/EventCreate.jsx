@@ -5,6 +5,7 @@ import PrivateLayout from "../../../components/private/PrivateLayout";
 import useInput from "../../../hooks/useInput";
 import styles from '../../members/Members.module.css';
 import { faL, faSearch } from "@fortawesome/free-solid-svg-icons";
+import useApi from "../../../hooks/useAPI";
 
 const ERROR_STYLE = {"color": "var(--error-red)"};
 const SUCCESS_STYLE = {"color": "var(--success-green)"};
@@ -17,6 +18,19 @@ function EventCreate() {
     const [nameController, nameErrorController] = useInput("");
     const [startController, startErrorController] = useInput("");
     const [endController, endErrorController] = useInput("");
+
+    const {data, loading, error, refetch} = useApi("/api/events/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: nameController.value,
+            date_start: startController.dateBackend,
+            date_end: endController.dateBackend,
+            created_by: user.user.id,
+        })
+    }, false)
 
     // Start time, end time, members
 
@@ -63,7 +77,6 @@ function EventCreate() {
             rCode = false;
         } else if (startController.value >= endController.value) {   // End time must be after start time
             // Ensure correct errorController error message
-            console.log("hits");
             let errMsg = "Event End Time must be after Event Start Time.";
             if (!endErrorController.error || endErrorController.errorMessage != errMsg) {
                 endErrorController.handleUpdateError(errMsg, true);
@@ -78,14 +91,17 @@ function EventCreate() {
 
         // If no errors were found, process form
         if (rCode) {
+            // Send POST to backend
+            refetch(true);
+            
             // Dispatch ADD_EVENT
             dispatch({
                 type: "ADD_EVENT",
                 payload: {
                     name: nameController.value,
-                    eventMembers: [],
-                    startTime: startController.value,
-                    endTime: endController.value,
+                    members: [],
+                    date_start: startController.value,
+                    date_end: endController.value,
                 }
             });
 
@@ -119,7 +135,7 @@ function EventCreate() {
                         {startErrorController.error && startErrorController.errorMessage}
                     </span>
                     <input type="datetime-local" value={startController.value} className={styles.inputTime}
-                        onChange={(e) => startController.handleUpdateValue(e.target.value)}
+                        onChange={(e) => startController.handleUpdateValue(e.target.value, true)}
                     />
                 </div>
                 <div>
@@ -128,7 +144,7 @@ function EventCreate() {
                         {endErrorController.error && endErrorController.errorMessage}
                     </span>
                     <input type="datetime-local" value={endController.value} className={styles.inputTime}
-                        onChange={(e) => endController.handleUpdateValue(e.target.value)}
+                        onChange={(e) => endController.handleUpdateValue(e.target.value, true)}
                     />
                 </div>
 
