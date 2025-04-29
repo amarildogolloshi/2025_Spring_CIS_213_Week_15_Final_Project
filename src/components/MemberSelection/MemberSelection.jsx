@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../store/UserContextProvider";
 import styles from "./MemberSelection.module.css";
+import useApi from "../../hooks/useAPI";
 
 const ERROR_STYLE = {"color": "var(--error-red)"};
 const SUCCESS_STYLE = {"color": "var(--success-green)"};
@@ -20,15 +21,31 @@ function MemberSelection() {
     * 
     */
     function handleEventSelect(e) {
-        const eventId = e.target.value;
+        let eventId = e.target.value;
+        eventId = parseInt(eventId);
         setSelectedEvent(eventId);
-        
+
         // Gather current member ids for the event
         setEventMembers(user.events.filter((event) => event.id == eventId)[0].members.map((member) => member.id));
     }
 
     function handleSubmitBtn() {
-        console.log("Submit");
+        console.log(eventMembers)
+        // Ensure event is selected and eventMembers is not empty
+        // if (selectedEvent != "" && eventMembers != []) {
+        //     useApi(`/api/events/${selectedEvent}/members`, {
+        //         method: "PUT",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({
+        //             event_id: selectedEvent,
+        //             members: eventMembers,
+        //         })
+        //     }, false);
+        // } else {
+        //     console.log("Selected event is empty OR eventMembers is empty.");
+        // }
     }
 
     function handleSortSelect(e) {
@@ -95,6 +112,9 @@ function MemberSelection() {
         let [id, name] = (e.target.value.split(" "));
         let checked = e.target.checked;
 
+        // Parse ID as an int
+        id = parseInt(id);
+
         // Update current members based on checked
         setEventMembers(prevMembers => 
             checked ? [...prevMembers, id] : prevMembers.filter((memberId) => memberId != id)
@@ -108,7 +128,7 @@ function MemberSelection() {
             type: "UPDATE_EVENT_MEMBERS",
             payload: {
                 memberIds, 
-                eventId: selectedEvent,
+                eventId: parseInt(selectedEvent),
             }  
         })
 
