@@ -22,6 +22,14 @@ const dropdownItems = [
     ],
   },
   {
+    title: "Scheduler",
+    stateKey: "Scheduler",
+    links: [
+      { name: "Create New", path: "/pulse/scheduler/create" },
+      { name: "Show All", path: "/pulse/scheduler" },
+    ],
+  },
+  {
     title: "Support",
     stateKey: "support",
     links: [

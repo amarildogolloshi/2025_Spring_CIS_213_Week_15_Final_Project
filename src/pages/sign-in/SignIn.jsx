@@ -15,8 +15,8 @@ function SignIn() {
     const [message, setMessage] = useState(null);
     const [messageType, setMessageType] = useState("success");
 
-    const [userInput, setUserInput] = useState("RegisterTest@pulse.com");
-    const [passInput, setPassInput] = useState("RegisterTest");
+    const [userInput, setUserInput] = useState("instaadmin");
+    const [passInput, setPassInput] = useState("instaadmin");
 
     // Handle input
     const handleUserInput = (e) => setUserInput(e.target.value);

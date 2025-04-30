@@ -154,8 +154,6 @@ export function userReducer(state, action) {
                     localStorage.setItem("user", JSON.stringify(userData));
                 } 
 
-
-
                 return {
                     ...state,   // Unpack all state info
                     members: [
@@ -171,6 +169,48 @@ export function userReducer(state, action) {
             }
 
             return state;
+        case "ADD_TASK":
+            // Backend validation
+            let backendValidation7 = true;
+            if (backendValidation7) {
+
+                userData = JSON.parse(localStorage.getItem("user"));
+                if (userData) {
+                    userData.tasks = [...userData.tasks, action.payload];
+                    // Save it back to localStorage
+                    localStorage.setItem("user", JSON.stringify(userData));
+                } 
+
+                return {
+                    ...state,   // Unpack all state info
+                    tasks: [
+                        ...state.tasks,   // Unpack previous tasks
+                        action.payload
+                    ]
+                }
+            }
+
+            return state; 
+        case "DELETE_TASK":
+            // Backend validation
+            let backendValidation8 = true;
+            if (backendValidation8) {
+
+                userData = JSON.parse(localStorage.getItem("user"));
+                if (userData) {
+                    userData.tasks = userData.tasks.filter((task) => task.id !== action.payload.id);
+                    // Save it back to localStorage
+                    localStorage.setItem("user", JSON.stringify(userData));
+                } 
+                
+                return {
+                    ...state,   // Unpack all state info
+                    // Filter out target member
+                    tasks: state.tasks.filter((task) => task.id != action.payload.id),
+                }
+            }
+
+            return state;   
         default:
             return state;
     }
