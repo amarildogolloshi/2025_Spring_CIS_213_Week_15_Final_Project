@@ -5,3 +5,10 @@
     margin-left: var(--app-sidebar-width);
     position: relative; /* For absolute positioning of child elements */
   }
+
+@media screen and (max-width: 600px) {
+  .right-section {
+    width: 100%;
+    margin-left: 0;
+  }
+}

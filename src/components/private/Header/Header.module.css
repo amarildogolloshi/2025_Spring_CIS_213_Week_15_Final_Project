@@ -27,3 +27,13 @@
     align-items: center;
       border-bottom: 1px solid #ccc;
   }
+
+@media screen and (max-width: 600px) {
+  .header {
+    width: 100%;
+    /* margin-top: -1rem; */
+    flex-wrap: wrap;
+    justify-content: right;
+    gap: 1rem;
+  }
+}

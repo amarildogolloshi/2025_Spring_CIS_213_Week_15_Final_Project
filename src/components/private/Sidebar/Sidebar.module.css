@@ -8,3 +8,23 @@
     height: 100%;
     position: fixed;
   }
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    z-index: 1000;
+    margin: 0;
+    padding: 2rem;
+    width: 100%;
+    padding-left: 1rem;
+  }
+
+  .closeNav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .25em .5em;
+    font-size: 1.25em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
