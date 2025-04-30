@@ -16,3 +16,16 @@
 .contactInfo p {
     padding: 1rem 0;
 }
+
+@media screen and (max-width: 600px) {
+    .contactInfo {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 1em;
+    }
+
+    .contactInfo p {
+        padding: 0;
+    }
+}
