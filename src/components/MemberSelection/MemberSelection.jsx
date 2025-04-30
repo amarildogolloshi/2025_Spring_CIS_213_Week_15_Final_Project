@@ -18,7 +18,7 @@ function MemberSelection() {
 
     console.log(user.events);
     console.log(user.events.filter((event) => event.id == selectedEvent)[0])
-    const { data, loading, error, refetch } = useApi(`/api/events/${selectedEvent}/members`, {
+    const { data, loading, error, refetch } = useApi(`/api/events/${selectedEvent}/members/`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
