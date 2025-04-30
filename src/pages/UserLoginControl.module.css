@@ -104,3 +104,9 @@
 .section form div a:hover {
     border-bottom: 1px solid var(--light-border-blue);
 }
+
+@media screen and (max-width: 600px) {
+    .section form {
+        width: 100%;
+    }
+}
