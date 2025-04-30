@@ -20,7 +20,7 @@
 
 .support .support-box-container .support-box {
     flex: 1 1 400px;
-    max-width: 50%;
+    /* max-width: 50%; */
     display: flex;
     flex-direction: column;
     background: white;
@@ -54,10 +54,23 @@
     .support-box-container {
         flex-direction: column;
         align-items: center;
+        max-width: 100%;
     }
 
     .support-box {
-        flex: 1 1 100%;
-        max-width: 90%;
+        max-height: fit-content;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .support {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 358px) {
+    .support {
+        margin-top: 5rem;
     }
 }
