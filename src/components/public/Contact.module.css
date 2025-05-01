@@ -101,3 +101,21 @@
 .socialLinks a:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 600px) {
+    .contactContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        height: fit-content;
+    }
+
+    .contactFormContainer {
+        padding: 0;
+        margin: 0;
+    }
+
+    .socialLinks {
+        margin-top: 0;
+    }
+}

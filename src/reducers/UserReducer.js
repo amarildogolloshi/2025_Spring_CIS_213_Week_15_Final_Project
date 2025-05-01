@@ -102,6 +102,24 @@ export function userReducer(state, action) {
         case "UPDATE_EVENT_MEMBERS":
             let backendValidation6 = true;
             if (backendValidation6) {
+
+                // Update local storage
+                userData = JSON.parse(localStorage.getItem("user"));
+                if (userData) {
+                    // Get the event index
+                    let eventIndex = userData.events.findIndex((event) => 
+                        event.id == action.payload.eventId
+                    );
+
+                    // Update target event's members for local storage
+                    userData.events[eventIndex].members = userData.members.filter((member) => 
+                        action.payload.memberIds.includes(member.id)
+                    );
+                    
+                    // Save it back to localStorage
+                    localStorage.setItem("user", JSON.stringify(userData)); 
+                }
+
                 return {
                     ...state,    // Unpack all state info
                     // Add new member to the target event
@@ -109,7 +127,10 @@ export function userReducer(state, action) {
                         event.id == action.payload.eventId ? 
                         {
                             ...event,
-                            eventMembers: action.payload.memberIds,
+                            members: state.members.filter((member) => 
+                                // Store the complete member information
+                                action.payload.memberIds.includes(member.id)
+                            )
                         }
                         : event
                     )
