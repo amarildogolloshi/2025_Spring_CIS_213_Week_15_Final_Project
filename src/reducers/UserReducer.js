@@ -211,6 +211,28 @@ export function userReducer(state, action) {
             }
 
             return state;   
+        
+        case "UPDATE_TASK":
+                // Backend validation
+                let backendValidation9 = true;
+                if (backendValidation9) {
+                    userData = JSON.parse(localStorage.getItem("user"));
+                    if (userData) {
+                        userData.tasks = userData.tasks.map((task) => task.id == action.payload.id ?  
+                            action.payload : task);
+                        // Save it back to localStorage
+                        localStorage.setItem("user", JSON.stringify(userData));
+                    } 
+                    return {
+                        ...state,   // Unpack all state info
+                        // Find and update target member using payload id
+                        tasks: state.tasks.map((task) => task.id == action.payload.id ? 
+                            action.payload : task
+                        ),
+                    }
+                }
+    
+                return state;    
         default:
             return state;
     }

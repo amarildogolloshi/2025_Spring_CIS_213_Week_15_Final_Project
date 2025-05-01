@@ -33,6 +33,7 @@ function TableRow({ id, type, interval, last_run, next_run, is_active}) {
             interval: intervalController.value,
             last_run: lastRunController,
             next_run: nextRunController,
+            is_active:is_active,
         }),
     }, false);
 
@@ -48,21 +49,7 @@ function TableRow({ id, type, interval, last_run, next_run, is_active}) {
         // TODO - frontend validation
         let validationChecks = true;
         if (validationChecks) {
-             // Dispatch the update action
-             dispatch({
-                type: "UPDATE_MEMBER",
-                payload: {
-                    id,
-                    type: typeController.value,
-                    interval: intervalController.value,
-                    last_run: lastRunController,
-                    next_run: nextRunController,
-                }
-            })
-            
-            // Exit edit view
-            setEditView(prevEdit => !prevEdit);
-            
+
             // Send PUT request to backend
             refetch(true);
         }
@@ -94,29 +81,36 @@ function TableRow({ id, type, interval, last_run, next_run, is_active}) {
     }
 
     useEffect(() => {
-        console.log("TableRow:useEffect")  
-            if (error) {
-                console.log("Error:", error)
-                setMessage("Error fetching data: " + error);
-                setMessageType("error");
-            }
-    
-            if (data && !error) {
-                // console.log("Login user:", user)
-                // console.log("Login data:", data)
-                // console.log("Login data:", data.user)
-                // login(user, data.access_token );
+        if (error) {
+            setMessage("Error fetching data: " + error);
+            setMessageType("error");
+        }
 
-            }
- 
-        }, [data, error, dispatch, id, typeController.value, intervalController.value]);
+        if (data && !error) {
+            // Dispatch the update action
+            dispatch({
+                type: "UPDATE_TASK",
+                payload: {
+                    id:id,
+                    type: typeController.value,
+                    interval: intervalController.value,
+                    last_run: lastRunController,
+                    next_run: nextRunController,
+                }
+            })
+            
+            // Exit edit view
+            setEditView(prevEdit => !prevEdit);
+        }
+
+    }, [data, error, dispatch]);
     
     return (
         <tr>
             {editView ?
             <>
                 <td>
-                    <select value={typeController.value} onChange={(e) => typeController.handleUpdateValue(e.target.value)}>
+                    <select  value={typeController.value} onChange={(e) => typeController.handleUpdateValue(e.target.value)}>
                         <option value="">None</option>
                         <option value="scheduled_task_instagram_sync">Instagram Synchronize followers</option>
                     </select>
@@ -139,7 +133,7 @@ function TableRow({ id, type, interval, last_run, next_run, is_active}) {
             :   
             <>
                 <td>
-                    <select value={typeController.value} onChange={(e) => typeController.handleUpdateValue(e.target.value)} disabled>
+                    <select className={styles.selectViewMode} value={typeController.value} onChange={(e) => typeController.handleUpdateValue(e.target.value)} disabled>
                         <option value="">None</option>
                         <option value="scheduled_task_instagram_sync">Instagram Synchronize followers</option>
                     </select>

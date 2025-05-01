@@ -66,3 +66,10 @@
     object-fit: cover;
     margin-right: .5em;
 }
+
+.selectViewMode{
+    border: none;
+    appearance: none;
+    width: 100%;
+    text-align: center;
+}
