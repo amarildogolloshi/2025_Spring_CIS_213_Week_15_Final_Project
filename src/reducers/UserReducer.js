@@ -254,6 +254,29 @@ export function userReducer(state, action) {
                 }
     
                 return state;    
+        case "UPDATE_USER":
+            // Backend validation
+            let backendValidation10 = true;
+            if (backendValidation10) {
+                userData = JSON.parse(localStorage.getItem("user"));
+                if (userData) {
+                    userData.user = {
+                        ...state.user,  
+                        ...action.payload 
+                    }
+                    // Save it back to localStorage
+                    localStorage.setItem("user", JSON.stringify(userData));
+                } 
+                return {
+                    ...state,
+                    user: {
+                        ...state.user,
+                        ...action.payload 
+                    }
+                }
+            }
+
+            return state;    
         default:
             return state;
     }

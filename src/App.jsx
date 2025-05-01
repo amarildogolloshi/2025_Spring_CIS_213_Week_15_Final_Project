@@ -29,6 +29,7 @@ import TermsAndConditions from "./pages/terms-and-conditions/TermsAndConditions.
 import ContactPage from "./pages/contact/ContactPage.jsx";
 import AboutPage from "./pages/about/AboutPage.jsx";
 import FAQPage from "./pages/faq-page/FAQPage.jsx";
+import Profile from "./pages/profile/Profile.jsx";
 
 function App() {
   const {user, dispatch, login} = useContext(UserContext);
@@ -80,6 +81,7 @@ function App() {
           <Route path='/pulse/members/cards' element={<ProtectedRoute element={<MembersCards />} />}/>
           <Route path='/pulse/scheduler/create' element={<ProtectedRoute element={<SchedulerCreate />} />}/>
           <Route path='/pulse/scheduler' element={<ProtectedRoute element={<SchedulerShowAll />} />}/>
+          <Route path='/pulse/profile' element={<ProtectedRoute element={<Profile />} />}/>
           <Route path='/pulse/support/report' element={<Report />} />
           <Route path='/pulse/support/feature' element={<Feature />} />
           <Route path='/pulse/about' element={<ProtectedRoute element={<About />} />} />
