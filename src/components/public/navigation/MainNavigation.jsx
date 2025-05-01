@@ -17,6 +17,8 @@ function MainNavigation() {
         case "/forgotpassword":
         case "/privacy-policy":
         case "/terms-and-conditions":
+        case "/support":
+        case "/faq":
             navRender = <SignInNav />;
             break;
         default:
